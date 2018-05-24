@@ -8,6 +8,9 @@ hs_err_pid*
 
 # ibas packages
 */.idea
+*/.idea/
+*/.out
+*/.out/
 */src/main/webapp/3rdparty/ibas
 */src/main/webapp/3rdparty/openui5
 */src/main/webapp/modules/
@@ -29,6 +32,9 @@ hs_err_pid*
 /.recommenders/
 /RemoteSystemsTempFiles/
 /Servers/
+.idea/
+.idea
+.cache
 .idea/artifacts/edi_initialfantasy_war_exploded.xml
 .idea/compiler.xml
 .idea/inspectionProfiles/Project_Default.xml
@@ -56,3 +62,23 @@ hs_err_pid*
 edi.initialfantasy.iml
 out/artifacts/edi_initialfantasy_war_exploded/META-INF/MANIFEST.MF
 out/artifacts/edi_initialfantasy_war_exploded/WEB-INF/web.xml
+.gitignore
+out/artifacts/edi_initialfantasy_Web_exploded/index.jsp
+out/artifacts/edi_initialfantasy_Web_exploded/META-INF/MANIFEST.MF
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/log4j.properties
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/mybatis/mybatis-config.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/spring/applicationContext-dao.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/spring/applicationContext-service.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/spring/applicationContext-tx.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/org/edi/initialfantasy/resources/spring/springmvc.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/log4j.properties
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/mybatis/mybatis-config.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/spring/applicationContext-dao.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/spring/applicationContext-service.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/spring/applicationContext-tx.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/resources/spring/springmvc.xml
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/web.xml
+out/artifacts/edi_stocktask_Web_exploded/index.jsp
+out/artifacts/edi_stocktask_Web_exploded/META-INF/MANIFEST.MF
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/log4j.properties
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/web.xml

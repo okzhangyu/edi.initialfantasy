@@ -34,7 +34,7 @@ public class LoginService {
             if (hmacPassword.equals(EncPassword)) {
                 status = loginUser.getUser_name();
             } else {
-                status = "没有该用户";
+                status = "not exist user";
             }
         } catch (Exception e) {
             status = e.getMessage();
