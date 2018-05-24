@@ -1,10 +1,12 @@
-package org.edi.initialfantasy.bo;
+package org.edi.initialfantasy.bo.company;
+
+import org.edi.initialfantasy.bo.company.ICompany;
 
 /**
  * @author Fancy
  * @date 2018/5/17
  */
-public class Company implements ICompany{
+public class Company implements ICompany {
 
 
     public String getCompanyId() {

@@ -1,4 +1,4 @@
-package org.edi.initialfantasy.bo;
+package org.edi.initialfantasy.bo.company;
 
 /**
  * @author Fancy
