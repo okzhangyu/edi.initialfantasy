@@ -1,11 +1,13 @@
-package org.edi.initialfantasy.bo;
+package org.edi.initialfantasy.bo.userauthrization;
+
+import org.edi.initialfantasy.bo.userauthrization.IUserAuth;
 
 /**
  * @author Fancy
  * 用户授权
  * @date 2018/5/17
  */
-public class UserAuth implements IUserAuth{
+public class UserAuth implements IUserAuth {
 
 
     public String getUserId() {

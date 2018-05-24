@@ -1,10 +1,12 @@
-package org.edi.initialfantasy.bo;
+package org.edi.initialfantasy.bo.user;
+
+import org.edi.initialfantasy.bo.user.IUser;
 
 /**
  * @author Fancy
  * @date 2018/5/17
  */
-public class User implements IUser{
+public class User implements IUser {
 
     public String getUserId() {
         return null;
