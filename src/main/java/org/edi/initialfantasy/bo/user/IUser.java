@@ -5,6 +5,7 @@ package org.edi.initialfantasy.bo.user;
  * @date 2018/5/17
  */
 public interface IUser {
+
     String getUserId();
 
     void setUserId(String value);

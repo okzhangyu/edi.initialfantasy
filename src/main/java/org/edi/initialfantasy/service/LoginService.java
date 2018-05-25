@@ -41,6 +41,7 @@ public class LoginService {
         }
         return status;
     }
+
     @GET
     @Path("/getname")
     @Produces("text/plain")
