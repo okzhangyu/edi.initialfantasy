@@ -30,4 +30,12 @@ public class UserService implements IUserService{
     public String Logout(String logoutInfo) {
         return null;
     }
+
+
+    @GET
+    @Path("/getname")
+    @Produces("text/plain")
+    public String UserLogin(){
+        return "hello";
+    }
 }

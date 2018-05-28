@@ -20,30 +20,25 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
-
-
-
 	<!-- 	创建数据源，引入信息 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-		<property name="url" value="jdbc:sqlserver://192.168.3.14:1433;DatabaseName=StockManageDB"/>
+		<property name="url" value="jdbc:sqlserver://localhost;DatabaseName=StockManageDB"/>
 		<property name="username" value="sa"/>
 		<property name="password" value="avatech"/>
 	</bean>
 
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:org/edi/initialfantasy/resources/mybatis/mybatis-config.xml"/>
-		<property name="typeAliasesPackage" value="org.edi.initialfantasy.bo"/>
+		<property name="typeAliasesPackage" value="org.edi.initialfantasy.bo.user"/>
 	</bean>
+
 	
 <!-- 	创建session会话工厂，引入数据源，配置文件，起别名 -->
 
-	
 <!-- 	引入映射文件 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	<property name="basePackage" value="org.edi.initialfantasy.repository"/>
 	</bean>
 	
-        </beans>
+</beans>

@@ -24,4 +24,4 @@
 	<context:component-scan base-package="org.edi.initialfantasy.*"/>
 	<bean id="MD5Util" class="org.edi.initialfantasy.util.MD5Util"></bean>
 
-        </beans>
+</beans>
