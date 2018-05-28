@@ -1,6 +1,7 @@
 package org.edi.initialfantasy.repository;
 
-import org.edi.initialfantasy.bo.Vuser;
+import org.apache.ibatis.annotations.Mapper;
+import org.edi.initialfantasy.bo.user.Vuser;
 import org.springframework.stereotype.Repository;
 
 

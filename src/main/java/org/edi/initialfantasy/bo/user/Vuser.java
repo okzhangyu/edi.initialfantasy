@@ -1,4 +1,4 @@
-package org.edi.initialfantasy.bo;
+package org.edi.initialfantasy.bo.user;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
