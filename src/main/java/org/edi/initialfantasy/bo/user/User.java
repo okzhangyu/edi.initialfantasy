@@ -1,58 +1,83 @@
 package org.edi.initialfantasy.bo.user;
 
-import org.edi.initialfantasy.bo.user.IUser;
-
 /**
  * @author Fancy
  * @date 2018/5/17
  */
 public class User implements IUser {
+    private Integer userId;
+    private String userName;
+    private String password;
+    private String isMobileUser;
+    private String mobilePassword;
 
-    public String getUserId() {
-        return null;
+    @Override
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserId(String value) {
-
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getCompanyId() {
-        return null;
-    }
-
-    public void setCompanyId(String value) {
-
-    }
-
-    public String getDeptId() {
-        return null;
-    }
-
-    public void setDeptId(String value) {
-
-    }
-
+    @Override
     public String getUserName() {
-        return null;
+        return userName;
     }
 
-    public void setUserName(String value) {
-
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
+    @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
-    public void setPassword(String value) {
-
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    @Override
     public String getIsMobileUser() {
-        return null;
+        return isMobileUser;
     }
 
-    public void setIsMobileUser(String value) {
+    @Override
+    public void setIsMobileUser(String isMobileUser) {
+        this.isMobileUser = isMobileUser;
+    }
 
+    public String getMobilePassword() {
+        return mobilePassword;
+    }
+
+    public void setMobilePassword(String mobilePassword) {
+        this.mobilePassword = mobilePassword;
+    }
+
+    public User() {
+    }
+
+    public User(Integer userId, String userName, String password, String isMobileUser, String mobilePassword) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.isMobileUser = isMobileUser;
+        this.mobilePassword = mobilePassword;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", isMobileUser='" + isMobileUser + '\'' +
+                ", mobilePassword='" + mobilePassword + '\'' +
+                '}';
     }
 }

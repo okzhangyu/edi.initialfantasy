@@ -6,7 +6,7 @@ package org.edi.initialfantasy.service;
  */
 public interface IUserService {
 
-    String Login(String loginInfo);
+    String Login(String EncAccount,String EncPassword);
 
     String Logout(String logoutInfo);
 }

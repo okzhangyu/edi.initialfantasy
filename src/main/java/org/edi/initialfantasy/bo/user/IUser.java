@@ -6,17 +6,9 @@ package org.edi.initialfantasy.bo.user;
  */
 public interface IUser {
 
-    String getUserId();
+    Integer getUserId();
 
-    void setUserId(String value);
-
-    String getCompanyId();
-
-    void setCompanyId(String value);
-
-    String getDeptId();
-
-    void setDeptId(String value);
+    void setUserId(Integer value);
 
     String getUserName();
 
@@ -29,4 +21,13 @@ public interface IUser {
     String getIsMobileUser();
 
     void setIsMobileUser(String value);
+
+
+   /* String getCompanyId();
+
+    void setCompanyId(String value);
+
+    String getDeptId();
+
+    void setDeptId(String value);*/
 }
