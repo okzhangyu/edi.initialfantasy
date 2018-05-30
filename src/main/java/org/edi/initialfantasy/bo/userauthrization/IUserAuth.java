@@ -50,17 +50,13 @@ public interface IUserAuth {
      *获取有效时间（单位：s）
      * @return
      */
-    Integer getExpires();
+    String getAuthExpires();
 
     /**
      * 设置有效时间（单位：s）
      * @param value
      */
-    void setExpires(Integer value);
+    void setAuthExpires(String value);
 
-    /**
-     * 设置有效时间（单位：s）
-     * @param value
-     */
-    void setExpires(String value);
+
 }
