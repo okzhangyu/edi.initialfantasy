@@ -3,10 +3,8 @@ package org.edi.initialfantasy.service;
 import org.edi.initialfantasy.bo.user.Vuser;
 import org.edi.initialfantasy.repository.VuserMapper;
 import org.edi.initialfantasy.util.MD5Util;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,14 +15,11 @@ import javax.ws.rs.QueryParam;
  * @author Fancy
  * @date 2018/5/17
  */
-@Controller
-@Service
+
 @Path("/login")
 public class LoginService {
     @Autowired
     private VuserMapper vuserdao;
-    //@Autowired(required = false)
-    //private MD5Util MD5Util;
     @GET
     @Path("/getnamebyselect")
     @Produces("text/plain")

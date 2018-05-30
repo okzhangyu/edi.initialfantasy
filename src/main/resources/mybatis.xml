@@ -5,7 +5,5 @@
 
 <!-- 配置根节点 -->
 <configuration>
-    <properties>
-        <property name="dialect" value="sqlserver"/>
-    </properties>
+
 </configuration>
