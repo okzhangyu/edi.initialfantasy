@@ -2,6 +2,9 @@ package org.edi.initialfantasy.service;
 
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
+import org.edi.initialfantasy.dto.IResult;
+import org.edi.initialfantasy.dto.IUserAuthrizationRes;
+import org.edi.initialfantasy.dto.IUserAuthrization;
 import org.edi.initialfantasy.repository.UserAuthMapper;
 import org.edi.initialfantasy.repository.UserMapper;
 import org.edi.initialfantasy.util.MD5Util;
@@ -25,10 +28,9 @@ public class UserService implements IUserService{
 
 
     @GET
-    @Override
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
-    public String Login(@QueryParam("EncAccount") String EncAccount,
+    public String UserLogin(@QueryParam("EncAccount") String EncAccount,
                                     @QueryParam("EncPassword") String EncPassword) {
         String status = "";
         try {
@@ -49,6 +51,28 @@ public class UserService implements IUserService{
 
     }
 
+
+    @POST
+    @Override
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/userauthrization")
+    public IResult<IUserAuthrizationRes> Login(IUserAuthrization userAuthrization) {
+        String status = "";
+        try {
+            //TODO
+            //1.根据companyName查找companyId
+            //2.根据companyId、userName、password查找是否存在用户对象
+            //3.根据查找的用户对象的userId查找授权表是否存在记录
+            //  3.1、不存在记录，则新建一条记录
+            //  3.2、存在记录，但是token不可用，则延长过期时间
+            //  3.3、存在记录，token可用，直接返回token
+
+        } catch (Exception e) {
+            status = e.getMessage().toString();
+        }
+        return null;
+
+    }
 
 
     @DELETE
