@@ -5,6 +5,7 @@ import org.edi.initialfantasy.repository.VuserMapper;
 import org.edi.initialfantasy.util.MD5Util;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,7 @@ import javax.ws.rs.QueryParam;
  * @author Fancy
  * @date 2018/5/17
  */
-@Controller
-@Service
+@Component
 @Path("/login")
 public class LoginService {
     @Autowired
