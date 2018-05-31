@@ -1,6 +1,6 @@
 package org.edi.initialfantasy.dto;
 
-public class UserAuthrizationRes implements IUserAuthrizationRes{
+public class UserAuthrizationResult implements IUserAuthrizationResult{
 
     private String token;
     private Long expires;
@@ -16,11 +16,19 @@ public class UserAuthrizationRes implements IUserAuthrizationRes{
 
     @Override
     public Long getExpires() {
-        return null;
+        return this.expires;
     }
 
     @Override
     public void setExpires(Long value) {
         this.expires = value;
+    }
+
+    public UserAuthrizationResult() {
+    }
+
+    public UserAuthrizationResult(String token, Long expires) {
+        this.token = token;
+        this.expires = expires;
     }
 }

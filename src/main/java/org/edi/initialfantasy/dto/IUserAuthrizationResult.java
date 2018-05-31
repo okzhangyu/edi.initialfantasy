@@ -1,8 +1,6 @@
 package org.edi.initialfantasy.dto;
 
-import java.util.List;
-
-public interface IUserAuthrizationRes {
+public interface IUserAuthrizationResult {
 
     public String getToken();
     public void setToken(String value);

@@ -17,6 +17,7 @@ public class User implements IUser {
         return userId;
     }
 
+    @Override
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
@@ -59,30 +60,28 @@ public class User implements IUser {
         this.mobilePassword = mobilePassword;
     }
 
-    public Integer getCompanyId(){return companyId;}
+    @Override
+    public Integer getCompanyId() {
+        return companyId;
+    }
 
-    public void setCompanyId(Integer companyId){this.companyId = companyId;}
+    @Override
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
+    }
+
 
     public User() {
     }
 
-    public User(Integer userId, String userName, String password, String isMobileUser, String mobilePassword) {
+    public User(Integer userId, String userName, String password, String isMobileUser, String mobilePassword, Integer companyId) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.isMobileUser = isMobileUser;
         this.mobilePassword = mobilePassword;
+        this.companyId = companyId;
     }
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", isMobileUser='" + isMobileUser + '\'' +
-                ", mobilePassword='" + mobilePassword + '\'' +
-                '}';
-    }
 }
