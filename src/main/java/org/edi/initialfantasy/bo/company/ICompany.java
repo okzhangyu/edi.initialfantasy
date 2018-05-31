@@ -6,24 +6,25 @@ package org.edi.initialfantasy.bo.company;
  */
 public interface ICompany {
 
+
     /**
      * 获取公司Id
      * @return
      */
-    String getCompanyId();
+    Integer getCompanyId();
 
-    void setCompanyId(String value);
+    void setCompanyId(Integer value);
 
     /**
      * 获父级Id
      * @return
      */
-    String getParentId();
+    Integer getParentId();
 
     /**
      * 设置父级Id
      */
-    void setParentId(String value);
+    void setParentId(Integer value);
 
     /**
      * 获取公司名称
