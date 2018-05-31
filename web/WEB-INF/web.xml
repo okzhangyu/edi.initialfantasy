@@ -9,7 +9,7 @@
     </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:resources/spring-mybatis.xml</param-value>
+        <param-value>classpath:spring-mybatis.xml</param-value>
     </context-param>
 
     <servlet>
@@ -27,8 +27,5 @@
         <servlet-name>JAX-RS Servlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
-
-
-
 
 </web-app>

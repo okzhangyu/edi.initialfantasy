@@ -106,10 +106,4 @@ public class UserService implements IUserService{
     }
 
 
-    @GET
-    @Path("/getname")
-    @Produces("text/plain")
-    public String UserLogin(){
-        return "hello";
-    }
 }
