@@ -37,4 +37,13 @@ public class Result<T> implements IResult<T>{
     public void setData(List<T> value) {
         this.data = value;
     }
+
+    public Result() {
+    }
+
+    public Result(String code, String message, List<T> data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
 }

@@ -7,8 +7,13 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="is_mobile_user" property="isMobileUser" jdbcType="VARCHAR" />
     <result column="mobile_password" property="mobilePassword" jdbcType="VARCHAR" />
+    <result column="companyId" property="companyId" jdbcType="INTEGER" />
   </resultMap>
 
+
+  <select id="getUserByCompanyId" resultMap="BaseResultMap">
+    SELECT * FROM VIEW_IUSER WHERE is_mobile_user=#{0} and companyId=#{1}
+  </select>
 
   <select id="getUserBySelect" resultMap="BaseResultMap">
   SELECT * FROM VIEW_IUSER WHERE is_mobile_user=#{0} and mobile_password=#{1}

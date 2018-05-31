@@ -10,7 +10,7 @@ public class UserAuth implements IUserAuth {
     private String authId;
     private String authType;
     private String authToken;
-    private String authExpires;
+    private Long authExpires;
     private String isActive;
 
     @Override
@@ -53,11 +53,13 @@ public class UserAuth implements IUserAuth {
         this.authToken = authToken;
     }
 
-    public String getAuthExpires() {
+    @Override
+    public Long getAuthExpires() {
         return authExpires;
     }
 
-    public void setAuthExpires(String authExpires) {
+    @Override
+    public void setAuthExpires(Long authExpires) {
         this.authExpires = authExpires;
     }
 
@@ -72,7 +74,7 @@ public class UserAuth implements IUserAuth {
     public UserAuth() {
     }
 
-    public UserAuth(String userId, String authId, String authType, String authToken, String authExpires, String isActive) {
+    public UserAuth(String userId, String authId, String authType, String authToken, Long authExpires, String isActive) {
         this.userId = userId;
         this.authId = authId;
         this.authType = authType;
@@ -81,15 +83,11 @@ public class UserAuth implements IUserAuth {
         this.isActive = isActive;
     }
 
-    @Override
-    public String toString() {
-        return "UserAuth{" +
-                "userId='" + userId + '\'' +
-                ", authId='" + authId + '\'' +
-                ", authType='" + authType + '\'' +
-                ", authToken='" + authToken + '\'' +
-                ", authExpires='" + authExpires + '\'' +
-                ", isActive='" + isActive + '\'' +
-                '}';
+    public UserAuth(String userId,Long authExpires) {
+        this.userId = userId;
+        this.authExpires = authExpires;
+
     }
+
+
 }

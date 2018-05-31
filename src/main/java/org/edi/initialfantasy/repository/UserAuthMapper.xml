@@ -6,7 +6,7 @@
         <result column="auth_id" property="authId" jdbcType="VARCHAR" />
         <result column="auth_type" property="authType" jdbcType="VARCHAR" />
         <result column="auth_token" property="authToken" jdbcType="VARCHAR" />
-        <result column="auth_expires" property="authExpires" jdbcType="VARCHAR" />
+        <result column="auth_expires" property="authExpires" jdbcType="BIGINT" />
         <result column="is_active" property="isActive" jdbcType="VARCHAR" />
     </resultMap>
 
@@ -14,5 +14,15 @@
         insert into USERAUTH(user_id,auth_id,auth_type,auth_token,auth_expires,is_active)
         values(#{userId},#{authId},#{authType},#{authToken},#{authExpires},#{isActive})
     </insert>
+
+
+    <select id="serchLoginRecord" resultMap="BaseResultMap">
+        SELECT * FROM USERAUTH WHERE user_id=#{userName}
+    </select>
+
+
+    <update id="updateAuthExpires"  parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth">
+        UPDATE USERAUTH SET auth_expires=#{authExpires} where user_id=#{userId}
+    </update>
 
 </mapper>

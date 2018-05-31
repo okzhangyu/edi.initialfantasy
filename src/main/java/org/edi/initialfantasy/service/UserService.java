@@ -1,10 +1,11 @@
 package org.edi.initialfantasy.service;
 
+import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
-import org.edi.initialfantasy.dto.IResult;
-import org.edi.initialfantasy.dto.IUserAuthrizationRes;
-import org.edi.initialfantasy.dto.IUserAuthrization;
+import org.edi.initialfantasy.data.DataConvert;
+import org.edi.initialfantasy.dto.*;
+import org.edi.initialfantasy.repository.CompanyMapper;
 import org.edi.initialfantasy.repository.UserAuthMapper;
 import org.edi.initialfantasy.repository.UserMapper;
 import org.edi.initialfantasy.util.MD5Util;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Fancy
@@ -24,35 +27,54 @@ public class UserService implements IUserService{
     private UserMapper userDao;
     @Autowired
     private UserAuthMapper userAuthDao;
-
+    @Autowired
+    private CompanyMapper companyDao;
 
 
     @GET
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
-    public String UserLogin(@QueryParam("EncAccount") String EncAccount,
-                                    @QueryParam("EncPassword") String EncPassword) {
-        String status = "";
+    public IResult<IUserAuthrizationResult> Login(@BeanParam Userauthrization userauthrization) {
+        Result rs = new Result();
+        UserAuthrizationResult uaResult = new UserAuthrizationResult();
+        List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {
-            User loginUser =  userDao.getUserByName(EncAccount);
+            Company company = companyDao.serchCompanyId(userauthrization.getCompanyName());
+            User loginUser =  userDao.getUserByCompanyId(userauthrization.getUserName(),company.getCompanyId());
             String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
-            String authToken = UUIDUtil.randomUUID32();
-            UserAuth userRecord = new UserAuth(loginUser.getUserName(),loginUser.getIsMobileUser(),"客户",authToken,"1","Y");
-            userAuthDao.saveLoginRecord(userRecord);
-            if (hmacPassword.equals(EncPassword)) {
-                status = "Login Success";
+            if (hmacPassword.equals(userauthrization.getPassword())) {
+            long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
+            UserAuth userRecord = userAuthDao.serchLoginRecord(loginUser.getUserName());
+            if(userRecord==null) {
+                String authToken = UUIDUtil.randomUUID32();
+                userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
+                userAuthDao.saveLoginRecord(userRecord);
+                uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
+            }else{
+                Long currentTimeMillis = System.currentTimeMillis();
+                if(currentTimeMillis<userRecord.getAuthExpires()){
+                     uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
+                }else{
+                    UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
+                    userAuthDao.updateAuthExpires(userAuth);
+                    uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
+                }
+            }
+                listResult.add(uaResult);
+                rs = new Result("0", "ok", listResult);
             } else {
-                status = "Login Fail";
+                rs = new Result("1", "fail", listResult);
             }
         } catch (Exception e) {
-            status = e.getMessage().toString();
+         e.printStackTrace();
         }
-        return status;
+        return rs;
 
     }
 
 
-    @POST
+   /* @POST
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
@@ -72,7 +94,7 @@ public class UserService implements IUserService{
         }
         return null;
 
-    }
+    }*/
 
 
     @DELETE

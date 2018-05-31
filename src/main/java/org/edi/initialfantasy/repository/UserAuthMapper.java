@@ -7,4 +7,6 @@ import org.edi.initialfantasy.bo.userauthrization.UserAuth;
  */
 public interface UserAuthMapper {
     void saveLoginRecord(UserAuth userAuth);
+    UserAuth serchLoginRecord(String userName);
+    void updateAuthExpires(UserAuth userAuth);
 }

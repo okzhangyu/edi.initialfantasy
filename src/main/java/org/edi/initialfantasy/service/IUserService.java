@@ -1,10 +1,8 @@
 package org.edi.initialfantasy.service;
 
 import org.edi.initialfantasy.dto.IResult;
-import org.edi.initialfantasy.dto.IUserAuthrization;
-import org.edi.initialfantasy.dto.IUserAuthrizationRes;
-
-
+import org.edi.initialfantasy.dto.IUserAuthrizationResult;
+import org.edi.initialfantasy.dto.Userauthrization;
 
 /**
  * @author Fancy
@@ -12,7 +10,6 @@ import org.edi.initialfantasy.dto.IUserAuthrizationRes;
  */
 public interface IUserService {
 
-    IResult<IUserAuthrizationRes> Login(IUserAuthrization userauthrization);
-
+    IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization);
     String Logout(String logoutInfo);
 }
