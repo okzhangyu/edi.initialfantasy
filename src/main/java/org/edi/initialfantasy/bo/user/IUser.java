@@ -23,11 +23,11 @@ public interface IUser {
     void setIsMobileUser(String value);
 
 
-   /* String getCompanyId();
+    Integer getCompanyId();
 
-    void setCompanyId(String value);
+    void setCompanyId(Integer value);
 
-    String getDeptId();
-
-    void setDeptId(String value);*/
+//    String getDeptId();
+//
+//    void setDeptId(Integer value);
 }

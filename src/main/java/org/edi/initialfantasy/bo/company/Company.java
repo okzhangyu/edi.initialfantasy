@@ -9,35 +9,40 @@ import org.edi.initialfantasy.bo.company.ICompany;
 public class Company implements ICompany {
 
 
-    public String getCompanyId() {
-        return null;
+    private Integer companyId;
+    private Integer parentId;
+    private String companyName;
+    private String shortName;
+
+    public Integer getCompanyId() {
+        return this.companyId;
     }
 
-    public void setCompanyId(String value) {
-
+    public void setCompanyId(Integer value) {
+        this.companyId = value;
     }
 
-    public String getParentId() {
-        return null;
+    public Integer getParentId() {
+        return this.parentId;
     }
 
-    public void setParentId(String value) {
-
+    public void setParentId(Integer value) {
+        this.parentId = value;
     }
 
     public String getCompanyName() {
-        return null;
+        return this.companyName;
     }
 
     public void setCompanyName(String value) {
-
+        this.companyName = value;
     }
 
     public String getShortName() {
-        return null;
+        return this.shortName;
     }
 
     public void setShortName(String value) {
-
+        this.shortName = value;
     }
 }

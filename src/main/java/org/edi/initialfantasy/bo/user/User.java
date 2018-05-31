@@ -10,6 +10,7 @@ public class User implements IUser {
     private String password;
     private String isMobileUser;
     private String mobilePassword;
+    private Integer companyId;
 
     @Override
     public Integer getUserId() {
@@ -57,6 +58,10 @@ public class User implements IUser {
     public void setMobilePassword(String mobilePassword) {
         this.mobilePassword = mobilePassword;
     }
+
+    public Integer getCompanyId(){return companyId;}
+
+    public void setCompanyId(Integer companyId){this.companyId = companyId;}
 
     public User() {
     }
