@@ -20,21 +20,7 @@
     </properties>
     <dependencies>
 
-        <!-- junit lib -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
 
-        <!-- slf4j lib -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-            <scope>provided</scope>
-        </dependency>
 
         <!-- spring核心包 -->
         <!-- jersey中已存在 -->
