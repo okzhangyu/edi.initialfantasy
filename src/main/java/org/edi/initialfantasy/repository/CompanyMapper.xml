@@ -10,6 +10,6 @@
 
 
     <select id="serchCompanyId" resultMap="BaseResultMap">
-        SELECT * FROM VIEW_IUSER WHERE companyName=#{companyName}
+        SELECT * FROM Company WHERE companyName=#{companyName}
     </select>
 </mapper>
