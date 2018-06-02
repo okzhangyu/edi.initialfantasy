@@ -5,13 +5,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * 用户登陆授权传输对象
  */
-@XmlRootElement(name = "Userauthrization")
+@XmlRootElement
 public class Userauthrization {
 
     private String companyName;
-
     private String userName;
-
     private String password;
 
     public String getCompanyName(){return this.companyName;}
@@ -23,5 +21,12 @@ public class Userauthrization {
     public String getPassword(){return this.password;}
     public void setPassword(String value){this.password = value;}
 
+    public Userauthrization() {
+    }
 
+    public Userauthrization(String companyName, String userName, String password) {
+        this.companyName = companyName;
+        this.userName = userName;
+        this.password = password;
+    }
 }

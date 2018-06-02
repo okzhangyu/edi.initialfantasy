@@ -31,11 +31,11 @@ public class UserService implements IUserService{
     private CompanyMapper companyDao;
 
 
-    @GET
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
-    public IResult<IUserAuthrizationResult> Login(@BeanParam Userauthrization userauthrization) {
+    public IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization) {
         Result rs = new Result();
         UserAuthrizationResult uaResult = new UserAuthrizationResult();
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
@@ -68,33 +68,13 @@ public class UserService implements IUserService{
             }
         } catch (Exception e) {
          e.printStackTrace();
+            rs = new Result("1", "fail", listResult);
         }
         return rs;
 
     }
 
 
-   /* @POST
-    @Override
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/userauthrization")
-    public IResult<IUserAuthrizationRes> Login(IUserAuthrization userAuthrization) {
-        String status = "";
-        try {
-            //TODO
-            //1.根据companyName查找companyId
-            //2.根据companyId、userName、password查找是否存在用户对象
-            //3.根据查找的用户对象的userId查找授权表是否存在记录
-            //  3.1、不存在记录，则新建一条记录
-            //  3.2、存在记录，但是token不可用，则延长过期时间
-            //  3.3、存在记录，token可用，直接返回token
-
-        } catch (Exception e) {
-            status = e.getMessage().toString();
-        }
-        return null;
-
-    }*/
 
 
     @DELETE
