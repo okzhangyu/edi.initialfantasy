@@ -31,5 +31,4 @@ hs_err_pid*
 .idea/
 .idea
 .cache
-edi.initialfantasy.iml
-.gitignore
+*.iml
