@@ -1,7 +1,7 @@
 package org.edi.initialfantasy.service;
 
-import org.edi.freamwork.log.LogFileName;
-import org.edi.freamwork.log.LoggerUtils;
+import org.edi.freamwork.cryptogram.MD5Util;
+import org.edi.initialfantasy.binding.UserRequest;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
@@ -10,9 +10,7 @@ import org.edi.initialfantasy.dto.*;
 import org.edi.initialfantasy.repository.CompanyMapper;
 import org.edi.initialfantasy.repository.UserAuthMapper;
 import org.edi.initialfantasy.repository.UserMapper;
-import org.edi.initialfantasy.util.MD5Util;
 import org.edi.initialfantasy.util.UUIDUtil;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -36,13 +34,11 @@ public class UserService implements IUserService{
 
     @POST
     @Override
+    @UserRequest
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
     public IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization) {
-        Logger loger = LoggerUtils.Logger(LogFileName.YSYJ);
-        loger.info(userauthrization.getCompanyName()+";"+userauthrization.getUserName()+";"+userauthrization.getPassword());
-        loger.error(userauthrization.getCompanyName()+";"+userauthrization.getUserName()+";"+userauthrization.getPassword());
         Result rs = new Result();
         UserAuthrizationResult uaResult = new UserAuthrizationResult();
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
