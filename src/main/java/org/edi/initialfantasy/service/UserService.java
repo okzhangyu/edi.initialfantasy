@@ -11,6 +11,7 @@ import org.edi.initialfantasy.repository.UserMapper;
 import org.edi.initialfantasy.util.MD5Util;
 import org.edi.initialfantasy.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +23,7 @@ import java.util.List;
  * @date 2018/5/25
  */
 @Path("/v1")
+@Transactional
 public class UserService implements IUserService{
     @Autowired
     private UserMapper userDao;
@@ -60,6 +62,8 @@ public class UserService implements IUserService{
                     userAuthDao.updateAuthExpires(userAuth);
                     uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
                 }
+                UserAuth uauth = new UserAuth(userRecord.getUserId(),"Y");
+                userAuthDao.updateActive(uauth);
             }
                 listResult.add(uaResult);
                 rs = new Result("0", "ok", listResult);
@@ -79,11 +83,28 @@ public class UserService implements IUserService{
 
     @DELETE
     @Override
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("userauthrization")
-    public String Logout(String logoutInfo) {
-        return null;
+    @Path("/userauthrization")
+    public IResult Logout(@QueryParam("token")String token) {
+        Result rs = new Result();
+        if(token==null){
+            rs = new Result("1","请用您的token来退出!",null);
+        }else {
+            UserAuth auth = userAuthDao.serchAuthByToken(token);
+            if (auth == null) {
+                rs = new Result("1", "您的token不存在!", null);
+            } else {
+                auth.setIsActive("N");
+                userAuthDao.updateActive(auth);
+                rs = new Result("0", "ok", null);
+            }
+        }
+        return rs;
     }
+
+
+
 
 
     @GET

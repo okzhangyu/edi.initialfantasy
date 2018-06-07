@@ -89,5 +89,10 @@ public class UserAuth implements IUserAuth {
 
     }
 
+    public UserAuth(String userId,String isActive) {
+        this.userId = userId;
+        this.isActive = isActive;
+    }
+
 
 }

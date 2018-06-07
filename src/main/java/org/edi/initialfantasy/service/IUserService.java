@@ -10,5 +10,5 @@ import org.edi.initialfantasy.dto.Userauthrization;
  */
 public interface IUserService {
     IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization);
-    String Logout(String logoutInfo);
+    IResult Logout(String logoutInfo);
 }
