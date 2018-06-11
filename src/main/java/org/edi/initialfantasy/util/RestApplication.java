@@ -14,5 +14,6 @@ public class RestApplication extends ResourceConfig {
         //注册JSON转换器
         register(JacksonJsonProvider.class);
 
+
     }
 }

@@ -10,6 +10,7 @@ import org.edi.initialfantasy.repository.UserAuthMapper;
 import org.edi.initialfantasy.repository.UserMapper;
 import org.edi.initialfantasy.util.MD5Util;
 import org.edi.initialfantasy.util.UUIDUtil;
+import org.glassfish.jersey.server.JSONP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,10 +35,13 @@ public class UserService implements IUserService{
 
 
     @POST
+    @Override
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
+    //用户登录
     public IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization) {
+        System.out.println(userauthrization);
         Result rs = new Result();
         UserAuthrizationResult uaResult = new UserAuthrizationResult();
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
@@ -46,32 +50,79 @@ public class UserService implements IUserService{
             User loginUser =  userDao.getUserByCompanyId(userauthrization.getUserName(),company.getCompanyId());
             String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
             if (hmacPassword.equals(userauthrization.getPassword())) {
-            long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
-            UserAuth userRecord = userAuthDao.serchLoginRecord(loginUser.getUserName());
-            if(userRecord==null) {
-                String authToken = UUIDUtil.randomUUID32();
-                userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
-                userAuthDao.saveLoginRecord(userRecord);
-                uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
-            }else{
-                Long currentTimeMillis = System.currentTimeMillis();
-                if(currentTimeMillis<userRecord.getAuthExpires()){
-                     uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
+                long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
+                UserAuth userRecord = userAuthDao.serchLoginRecord(loginUser.getUserName());
+                if(userRecord==null) {
+                    String authToken = UUIDUtil.randomUUID32();
+                    userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
+                    userAuthDao.saveLoginRecord(userRecord);
+                    uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
                 }else{
-                    UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
-                    userAuthDao.updateAuthExpires(userAuth);
-                    uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
+                    Long currentTimeMillis = System.currentTimeMillis();
+                    if(currentTimeMillis<userRecord.getAuthExpires()){
+                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
+                    }else{
+                        UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
+                        userAuthDao.updateAuthExpires(userAuth);
+                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
+                    }
+                    UserAuth uauth = new UserAuth(userRecord.getUserId(),"Y");
+                    userAuthDao.updateActive(uauth);
                 }
-                UserAuth uauth = new UserAuth(userRecord.getUserId(),"Y");
-                userAuthDao.updateActive(uauth);
-            }
                 listResult.add(uaResult);
                 rs = new Result("0", "ok", listResult);
             } else {
                 rs = new Result("1", "fail", listResult);
             }
         } catch (Exception e) {
-         e.printStackTrace();
+            e.printStackTrace();
+            rs = new Result("1", "fail", listResult);
+        }
+        return rs;
+
+    }
+
+    @GET
+    @Override
+    @JSONP(queryParam="callback")//返回的函数名与http请求中的callback参数的值一致
+    @Produces("application/x-javascript")   //这里最好写成application/x-javascript
+    @Path("/userauthrization")
+    public IResult<IUserAuthrizationResult> LoginUser(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
+        System.out.println(companyName+userName+password);
+        Result rs = new Result();
+        UserAuthrizationResult uaResult = new UserAuthrizationResult();
+        List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
+        try {
+            Company company = companyDao.serchCompanyId(companyName);
+            User loginUser =  userDao.getUserByCompanyId(userName,company.getCompanyId());
+            String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
+            if (hmacPassword.equals(password)) {
+                long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
+                UserAuth userRecord = userAuthDao.serchLoginRecord(loginUser.getUserName());
+                if(userRecord==null) {
+                    String authToken = UUIDUtil.randomUUID32();
+                    userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
+                    userAuthDao.saveLoginRecord(userRecord);
+                    uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
+                }else{
+                    Long currentTimeMillis = System.currentTimeMillis();
+                    if(currentTimeMillis<userRecord.getAuthExpires()){
+                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
+                    }else{
+                        UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
+                        userAuthDao.updateAuthExpires(userAuth);
+                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
+                    }
+                    UserAuth uauth = new UserAuth(userRecord.getUserId(),"Y");
+                    userAuthDao.updateActive(uauth);
+                }
+                listResult.add(uaResult);
+                rs = new Result("0", "ok", listResult);
+            } else {
+                rs = new Result("1", "fail", listResult);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             rs = new Result("1", "fail", listResult);
         }
         return rs;
@@ -80,12 +131,12 @@ public class UserService implements IUserService{
 
 
 
-
     @DELETE
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
+    //用户退出
     public IResult Logout(@QueryParam("token")String token) {
         Result rs = new Result();
         if(token==null){
