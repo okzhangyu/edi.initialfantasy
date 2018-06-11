@@ -25,4 +25,11 @@
         UPDATE USERAUTH SET auth_expires=#{authExpires} where user_id=#{userId}
     </update>
 
+    <update id="updateActive"  parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth">
+        UPDATE USERAUTH SET is_active=#{isActive} where user_id=#{userId}
+    </update>
+
+    <select id="serchAuthByToken" resultMap="BaseResultMap">
+        SELECT * FROM USERAUTH WHERE auth_token=#{authToken}
+    </select>
 </mapper>
