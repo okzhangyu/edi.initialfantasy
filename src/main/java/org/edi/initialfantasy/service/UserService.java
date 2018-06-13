@@ -1,5 +1,7 @@
 package org.edi.initialfantasy.service;
 
+import org.edi.freamwork.cryptogram.MD5Util;
+import org.edi.initialfantasy.binding.UserRequest;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
@@ -8,7 +10,6 @@ import org.edi.initialfantasy.dto.*;
 import org.edi.initialfantasy.repository.CompanyMapper;
 import org.edi.initialfantasy.repository.UserAuthMapper;
 import org.edi.initialfantasy.repository.UserMapper;
-import org.edi.initialfantasy.util.MD5Util;
 import org.edi.initialfantasy.util.UUIDUtil;
 import org.glassfish.jersey.server.JSONP;
 import org.springframework.beans.factory.annotation.Autowired;
