@@ -24,6 +24,8 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
         //记录请求日志
 
+        //判断token是否有效--除登陆接口外
+
     }
 
     @Override

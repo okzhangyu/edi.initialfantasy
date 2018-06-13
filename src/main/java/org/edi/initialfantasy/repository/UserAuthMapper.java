@@ -9,4 +9,6 @@ public interface UserAuthMapper {
     void saveLoginRecord(UserAuth userAuth);
     UserAuth serchLoginRecord(String userName);
     void updateAuthExpires(UserAuth userAuth);
+    void updateActive(UserAuth userAuth);
+    UserAuth serchAuthByToken(String token);
 }
