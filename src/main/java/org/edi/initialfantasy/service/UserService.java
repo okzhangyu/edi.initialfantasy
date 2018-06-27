@@ -84,27 +84,31 @@ public class UserService implements IUserService{
 
     @GET
     @Override
-    @JSONP(queryParam="callback")//返回的函数名与http请求中的callback参数的值一致
-    @Produces("application/x-javascript")   //这里最好写成application/x-javascript
+    @JSONP(queryParam="callback")
+    @Produces("application/x-javascript")
     @Path("/userauthrization")
     public IResult<IUserAuthrizationResult> LoginUser(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
-        System.out.println(companyName+userName+password);
         Result rs = new Result();
         UserAuthrizationResult uaResult = new UserAuthrizationResult();
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {
+            //根据公司名称和用户名查询用户信息，并且为密码参数进行MD5加密与用户密码进行比对
             Company company = companyDao.serchCompanyId(companyName);
             User loginUser =  userDao.getUserByCompanyId(userName,company.getCompanyId());
             String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
             if (hmacPassword.equals(password)) {
+                //用户密码正确，获取截止到登录日期后一天的13位时间戳作为有效期
                 long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
+                //查询用户历史登录记录
                 UserAuth userRecord = userAuthDao.serchLoginRecord(loginUser.getUserName());
                 if(userRecord==null) {
+                    //没有用户记录则新建
                     String authToken = UUIDUtil.randomUUID32();
                     userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
                     userAuthDao.saveLoginRecord(userRecord);
                     uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
                 }else{
+                    //存在用户记录则得到当前登录时间的时间戳，和记录时间戳进行比对，在有效期内则返回，否则更新
                     Long currentTimeMillis = System.currentTimeMillis();
                     if(currentTimeMillis<userRecord.getAuthExpires()){
                         uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
@@ -154,6 +158,29 @@ public class UserService implements IUserService{
         return rs;
     }
 
+
+   /* @DELETE
+    @Override
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/userauthrization")
+    //用户退出
+    public IResult Logout(Token token) {
+        Result rs = new Result();
+        if(token.getToken()==null){
+            rs = new Result("1","请用您的token来退出!",null);
+        }else {
+            UserAuth auth = userAuthDao.serchAuthByToken(token.getToken());
+            if (auth == null) {
+                rs = new Result("1", "您的token不存在!", null);
+            } else {
+                auth.setIsActive("N");
+                userAuthDao.updateActive(auth);
+                rs = new Result("0", "ok", null);
+            }
+        }
+        return rs;
+    }*/
 
 
 
