@@ -19,6 +19,7 @@ public class UserAuthrizationResult implements IUserAuthrizationResult{
         return this.expires;
     }
 
+
     @Override
     public void setExpires(Long value) {
         this.expires = value;
