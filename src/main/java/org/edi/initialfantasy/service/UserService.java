@@ -1,7 +1,6 @@
 package org.edi.initialfantasy.service;
 
 import org.edi.freamwork.cryptogram.MD5Util;
-import org.edi.initialfantasy.binding.UserRequest;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
@@ -144,7 +143,7 @@ public class UserService implements IUserService{
     //用户退出
     public IResult Logout(@QueryParam("token")String token) {
         Result rs = new Result();
-        if(token==null){
+        if(token==null||token.equals("")){
             rs = new Result("1","请用您的token来退出!",null);
         }else {
             UserAuth auth = userAuthDao.serchAuthByToken(token);
