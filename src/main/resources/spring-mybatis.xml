@@ -23,7 +23,7 @@
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd ">
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="org.edi.initialfantasy.service" />
+	<context:component-scan base-package="org.edi.initialfantasy.*" />
 
 
 
@@ -46,7 +46,7 @@
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.edi.initialfantasy.repository" />
+		<property name="basePackage" value="org.edi.initialfantasy.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 

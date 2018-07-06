@@ -1,0 +1,12 @@
+package org.edi.initialfantasy.repository;
+
+import org.edi.initialfantasy.bo.user.User;
+
+/**
+ * Created by asus on 2018/7/6.
+ */
+public interface IBORepositoryUser {
+    User getUserBySelect(String account, String password);
+    User getUserByCompanyId(String account,Integer companyId);
+    User getUserByName(String account);
+}
