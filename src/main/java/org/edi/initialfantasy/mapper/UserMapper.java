@@ -1,4 +1,4 @@
-package org.edi.initialfantasy.repository;
+package org.edi.initialfantasy.mapper;
 
 import org.edi.initialfantasy.bo.user.User;
 

@@ -1,7 +1,7 @@
 package org.edi.initialfantasy.util;
 
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
-import org.edi.initialfantasy.repository.UserAuthMapper;
+import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
