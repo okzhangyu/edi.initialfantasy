@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
 
 
-
     @Autowired
     private UserAuthMapper userAuthMapper;
 

@@ -1,4 +1,4 @@
-package org.edi.initialfantasy.binding;
+package org.edi.initialfantasy.filter;
 
 import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;
