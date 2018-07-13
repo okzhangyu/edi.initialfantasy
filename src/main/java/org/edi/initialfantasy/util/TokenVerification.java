@@ -1,6 +1,8 @@
 package org.edi.initialfantasy.util;
 
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
+import org.edi.initialfantasy.data.ResultCode;
+import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,22 +17,18 @@ public class TokenVerification {
     private UserAuthMapper userAuthMapper;
 
     public  String verification(String token){
-        String verificationMsg = "";
-        if(token!=null&&!token.equals("")){
-            UserAuth userAuth = userAuthMapper.serchAuthByToken(token);
-            if(userAuth!=null){
-                if(userAuth.getIsActive().trim().equals("Y")){
-                    verificationMsg = "ok";
-                }else{
-                    verificationMsg = "the user is not logged in";
-                }
-            }else{
-                verificationMsg = "the token is not exist";
-            }
-        }else{
-            verificationMsg = "the token is null ";
+        if(token == null || token.isEmpty()){
+            return ResultDescription.TOKEN_IS_EMPTY;
         }
-        return verificationMsg;
+        UserAuth userAuth = userAuthMapper.serchAuthByToken(token);
+        if(userAuth == null){
+            return ResultDescription.TOKEN_IS_ERROR;
+        }
+        if(userAuth.getIsActive().trim().equals("Y")){
+            return ResultDescription.OK;
+        }else {
+            return ResultDescription.TOKEN_IS_EXPIRED;
+        }
     }
 
 }
