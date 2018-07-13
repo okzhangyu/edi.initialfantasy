@@ -15,6 +15,7 @@ public class AuthrizationException extends RuntimeException{
     public AuthrizationException(){}
 
     public AuthrizationException(String errorMsg){
+        super(errorMsg);
         this.response = errorMsg;
     }
 }
