@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by asus on 2018/7/4.
  */
 
-@Component(value="tokenVerification")
+@Component(value="tokenVerificate")
 public class TokenVerification {
     @Autowired
     private UserAuthMapper userAuthMapper;

@@ -6,6 +6,7 @@ import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
 import org.edi.initialfantasy.data.DataConvert;
 import org.edi.initialfantasy.dto.*;
+import org.edi.initialfantasy.filter.UserRequest;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
@@ -136,6 +137,7 @@ public class UserService implements IUserService{
 
 
 
+    @UserRequest
     @DELETE
     @Override
     @Consumes(MediaType.APPLICATION_JSON)
