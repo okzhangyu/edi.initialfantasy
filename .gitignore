@@ -84,3 +84,5 @@ out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/mappers/StockReportMapp
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/mappers/StockTaskMapper.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/resources/mappers/StockReportMapper.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/resources/mappers/StockTaskMapper.xml
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_StockReport.xml
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_StockTask.xml

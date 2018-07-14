@@ -1,7 +1,6 @@
 package org.edi.initialfantasy.util;
 
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
-import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by asus on 2018/7/4.
  */
 
-@Component(value="tokenVerificate")
+@Component(value="tokenVerification")
 public class TokenVerification {
     @Autowired
     private UserAuthMapper userAuthMapper;
@@ -29,6 +28,7 @@ public class TokenVerification {
         }else {
             return ResultDescription.TOKEN_IS_EXPIRED;
         }
+
     }
 
 }

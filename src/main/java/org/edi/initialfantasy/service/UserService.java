@@ -5,6 +5,7 @@ import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
 import org.edi.initialfantasy.data.DataConvert;
+import org.edi.initialfantasy.data.ServicePath;
 import org.edi.initialfantasy.dto.*;
 import org.edi.initialfantasy.filter.UserRequest;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
@@ -144,21 +145,18 @@ public class UserService implements IUserService{
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
     //用户退出
-    public IResult Logout(@QueryParam("token")String token) {
-        Result rs = new Result();
-        if(token==null||token.equals("")){
-            rs = new Result("1","请用您的token来退出!",null);
-        }else {
+    public IResult Logout(@QueryParam(ServicePath.TOKEN_NAMER)String token) {
+        Result result = new Result();
             UserAuth auth = boRepositoryUserAuth.serchAuthByToken(token);
-            if (auth == null) {
-                rs = new Result("1", "您的token不存在!", null);
-            } else {
-                auth.setIsActive("N");
-                boRepositoryUserAuth.updateActive(auth);
-                rs = new Result("0", "ok", null);
-            }
+        try {
+            auth.setIsActive("N");
+            boRepositoryUserAuth.updateActive(auth);
+            result = new Result("0", "ok", null);
+        }catch (Exception e){
+            e.printStackTrace();
+            result = new Result("0", "failed:"+e.getCause(), null);
         }
-        return rs;
+        return result;
     }
 
 
