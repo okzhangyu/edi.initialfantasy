@@ -28,7 +28,7 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
     private TokenVerification tokenVerificate;
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-        //记录验证日志
+        //记录请求日志
         try {
             MultivaluedMap<String, String> params = containerRequestContext.getUriInfo().getQueryParameters();
             //判断token是否有效--除登陆接口外

@@ -1,5 +1,6 @@
 package org.edi.initialfantasy.repository;
 
+import org.edi.freamwork.exception.BusinessException;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.mapper.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class BORepositoryCompany implements IBORepositoryCompany {
 
     @Override
     public Company serchCompanyId(String companyName){
-        return companyMapper.serchCompanyId(companyName);
+        Company company =companyMapper.serchCompanyId(companyName);
+        if(company==null){
+            throw new BusinessException("您的公司选择有误，请重新选择！");
+        }
+        return company;
     }
 }

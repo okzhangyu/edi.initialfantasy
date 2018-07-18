@@ -88,7 +88,7 @@ public class UserService implements IUserService{
     @GET
     @Override
     @JSONP(queryParam="callback")
-    @Produces("application/x-javascript")
+    @Produces("application/x-javascript;charset=utf-8")
     @Path("/userauthrization")
     public IResult<IUserAuthrizationResult> LoginUser(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
         Result rs = new Result();
@@ -126,11 +126,11 @@ public class UserService implements IUserService{
                 listResult.add(uaResult);
                 rs = new Result("0", "ok", listResult);
             } else {
-                rs = new Result("1", "fail", listResult);
+                rs = new Result("1", "fail:您的密码输入有误，请重新输入！", listResult);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            rs = new Result("1", "fail", listResult);
+            rs = new Result("1", "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
         }
         return rs;
 
