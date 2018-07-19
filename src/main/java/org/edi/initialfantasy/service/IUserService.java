@@ -9,7 +9,18 @@ import org.edi.initialfantasy.dto.Userauthrization;
  * @date 2018/5/25
  */
 public interface IUserService {
-    IResult<IUserAuthrizationResult> Login(Userauthrization userauthrization);
-    IResult<IUserAuthrizationResult> LoginUser(String companyName,String userName,String password);
-    IResult Logout(String token);
+
+    /**
+     * 登陆授权
+     * @param userauthrization 授权信息
+     * @return 登陆结果
+     */
+    IResult<IUserAuthrizationResult> login(Userauthrization userauthrization);
+
+    /**
+     * 退出
+     * @param token token
+     * @return 退出结果
+     */
+    IResult logout(String token);
 }
