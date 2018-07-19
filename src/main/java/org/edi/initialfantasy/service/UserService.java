@@ -5,6 +5,8 @@ import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
 import org.edi.initialfantasy.data.DataConvert;
+import org.edi.initialfantasy.data.ResultCode;
+import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.data.ServicePath;
 import org.edi.initialfantasy.dto.*;
 import org.edi.initialfantasy.filter.UserRequest;
@@ -73,13 +75,13 @@ public class UserService implements IUserService{
                     boRepositoryUserAuth.updateActive(uauth);
                 }
                 listResult.add(uaResult);
-                rs = new Result("0", "ok", listResult);
+                rs = new Result(ResultCode.OK, ResultDescription.OK, listResult);
             } else {
-                rs = new Result("1", "fail", listResult);
+                rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,"fail:"+ResultDescription.USERPASSWORD_IS_ERROR, listResult);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            rs = new Result("1", "fail", listResult);
+            rs = new Result(ResultCode.FAIL, "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
         }
         return rs;
 
@@ -88,7 +90,7 @@ public class UserService implements IUserService{
     @GET
     @Override
     @JSONP(queryParam="callback")
-    @Produces("application/x-javascript")
+    @Produces("application/x-javascript;charset=utf-8")
     @Path("/userauthrization")
     public IResult<IUserAuthrizationResult> LoginUser(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
         Result rs = new Result();
@@ -124,13 +126,13 @@ public class UserService implements IUserService{
                     boRepositoryUserAuth.updateActive(uauth);
                 }
                 listResult.add(uaResult);
-                rs = new Result("0", "ok", listResult);
+                rs = new Result(ResultCode.OK, ResultDescription.OK, listResult);
             } else {
-                rs = new Result("1", "fail", listResult);
+                rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,"fail:"+ResultDescription.USERPASSWORD_IS_ERROR, listResult);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            rs = new Result("1", "fail", listResult);
+            rs = new Result(ResultCode.FAIL, "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
         }
         return rs;
 
