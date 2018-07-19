@@ -2,6 +2,7 @@ package org.edi.initialfantasy.repository;
 
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.initialfantasy.bo.user.User;
+import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class BORepositoryUser implements IBORepositoryUser {
     public User getUserByCompanyId(String account,Integer companyId){
         User user = userMapper.getUserByCompanyId(account,companyId);
         if(user==null){
-            throw new BusinessException("抱歉，没有该用户！");
+            throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
         }
         return user;
     }
