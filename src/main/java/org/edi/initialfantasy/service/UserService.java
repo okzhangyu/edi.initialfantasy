@@ -84,61 +84,6 @@ public class UserService implements IUserService{
             rs = new Result(ResultCode.FAIL, "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
         }
         return rs;
-<<<<<<< HEAD
-=======
-
-    }
-
-    @GET
-    @Override
-    @JSONP(queryParam="callback")
-    @Produces("application/x-javascript;charset=utf-8")
-    @Path("/userauthrization")
-    public IResult<IUserAuthrizationResult> LoginUser(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
-        Result rs = new Result();
-        UserAuthrizationResult uaResult = new UserAuthrizationResult();
-        List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
-        try {
-            //根据公司名称和用户名查询用户信息，并且为密码参数进行MD5加密与用户密码进行比对
-            Company company = boRepositoryCompany.serchCompanyId(companyName);
-            User loginUser =  boRepositoryUser.getUserByCompanyId(userName,company.getCompanyId());
-            String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
-            if (hmacPassword.equals(password)) {
-                //用户密码正确，获取截止到登录日期后一天的13位时间戳作为有效期
-                long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
-                //查询用户历史登录记录
-                UserAuth userRecord = boRepositoryUserAuth.serchLoginRecord(loginUser.getUserName());
-                if(userRecord==null) {
-                    //没有用户记录则新建
-                    String authToken = UUIDUtil.randomUUID32();
-                    userRecord = new UserAuth(loginUser.getUserName(), loginUser.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
-                    boRepositoryUserAuth.saveLoginRecord(userRecord);
-                    uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
-                }else{
-                    //存在用户记录则得到当前登录时间的时间戳，和记录时间戳进行比对，在有效期内则返回，否则更新
-                    Long currentTimeMillis = System.currentTimeMillis();
-                    if(currentTimeMillis<userRecord.getAuthExpires()){
-                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),userRecord.getAuthExpires());
-                    }else{
-                        UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
-                        boRepositoryUserAuth.updateAuthExpires(userAuth);
-                        uaResult = new UserAuthrizationResult(userRecord.getAuthToken(),NextDayTimeMillis);
-                    }
-                    UserAuth uauth = new UserAuth(userRecord.getUserId(),"Y");
-                    boRepositoryUserAuth.updateActive(uauth);
-                }
-                listResult.add(uaResult);
-                rs = new Result(ResultCode.OK, ResultDescription.OK, listResult);
-            } else {
-                rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,"fail:"+ResultDescription.USERPASSWORD_IS_ERROR, listResult);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            rs = new Result(ResultCode.FAIL, "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
-        }
-        return rs;
-
->>>>>>> upstream/master
     }
 
 
