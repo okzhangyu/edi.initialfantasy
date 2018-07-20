@@ -51,4 +51,9 @@ public class ResultCode extends OpResultCode{
      * 参数信息为空
      */
     public static final String PARAMETER_IS_NULL= "1108";
+
+    /**
+     * 条码信息为空
+     */
+    public static final String CODEBAR_IS_NULL= "1109";
 }

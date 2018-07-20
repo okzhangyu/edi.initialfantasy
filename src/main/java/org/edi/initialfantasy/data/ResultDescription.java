@@ -27,4 +27,6 @@ public class ResultDescription extends OpResultDescription {
     public static  String B1DOCENTRY_IS_EXISTENT = "the bill have been generated";
 
     public static  String PARAMETER_IS_NULL= "the parameter info is null";
+
+    public static  String CODEBAR_IS_NULL= "the codebar info is null";
 }
