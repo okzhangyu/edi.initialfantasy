@@ -1,6 +1,6 @@
 package org.edi.initialfantasy.data;
 
-import org.edi.freamwork.operation.OpResultDescription;
+import org.edi.freamwork.data.operation.OpResultDescription;
 
 /**
  * @author Fancy

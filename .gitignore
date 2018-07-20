@@ -86,6 +86,12 @@ out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/resources/mappers/Stock
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/resources/mappers/StockTaskMapper.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_StockReport.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_StockTask.xml
+<<<<<<< HEAD
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/mappers/CodeBarMapper.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/resources/mappers/CodeBarMapper.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/ParseCodeBar.sql
+=======
+*.prefs
+.project
+.classpath
+>>>>>>> upstream/master

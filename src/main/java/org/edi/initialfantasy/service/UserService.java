@@ -72,7 +72,6 @@ public class UserService implements IUserService{
             rs = new Result(ResultCode.FAIL, "fail:"+(e.getCause()==null?e.getMessage():e.getCause().toString()), listResult);
         }
         return rs;
-
     }
 
 
@@ -85,8 +84,8 @@ public class UserService implements IUserService{
     @Path("/userauthrization")
     //用户退出
     public IResult Logout(@QueryParam(ServicePath.TOKEN_NAMER)String token) {
-        Result result = new Result();
-            UserAuth auth = boRepositoryUserAuth.serchAuthByToken(token);
+        Result result ;
+        UserAuth auth = boRepositoryUserAuth.serchAuthByToken(token);
         try {
             auth.setIsActive("N");
             boRepositoryUserAuth.updateActive(auth);
@@ -98,12 +97,4 @@ public class UserService implements IUserService{
         return result;
     }
 
-
-
-    @GET
-    @Path("/getname")
-    @Produces("text/plain")
-    public String UserLogin(){
-        return "hello";
-    }
 }
