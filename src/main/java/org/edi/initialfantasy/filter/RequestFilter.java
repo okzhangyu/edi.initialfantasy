@@ -45,7 +45,13 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
         //记录返回日志
+            try{
 
+            }catch (AuthrizationException e){
+
+            }catch (Exception e){
+
+            }
 
     }
 
