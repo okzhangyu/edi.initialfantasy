@@ -83,5 +83,15 @@ public class User implements IUser {
         this.companyId = companyId;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", isMobileUser='" + isMobileUser + '\'' +
+                ", mobilePassword='" + mobilePassword + '\'' +
+                ", companyId=" + companyId +
+                '}';
+    }
 }

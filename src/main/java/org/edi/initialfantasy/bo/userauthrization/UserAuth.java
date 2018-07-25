@@ -94,5 +94,15 @@ public class UserAuth implements IUserAuth {
         this.isActive = isActive;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserAuth{" +
+                "userId='" + userId + '\'' +
+                ", authId='" + authId + '\'' +
+                ", authType='" + authType + '\'' +
+                ", authToken='" + authToken + '\'' +
+                ", authExpires=" + authExpires +
+                ", isActive='" + isActive + '\'' +
+                '}';
+    }
 }

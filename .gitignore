@@ -95,3 +95,5 @@ out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/ParseCodeBar.sql
 .project
 .classpath
 >>>>>>> upstream/master
+out/artifacts/edi_initialfantasy_Web_exploded/WEB-INF/classes/mybatis-config.xml
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/mybatis-config.xml
