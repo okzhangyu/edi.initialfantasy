@@ -1,7 +1,5 @@
 package org.edi.initialfantasy.bo.company;
 
-import org.edi.initialfantasy.bo.company.ICompany;
-
 /**
  * @author Fancy
  * @date 2018/5/17
@@ -44,5 +42,15 @@ public class Company implements ICompany {
 
     public void setShortName(String value) {
         this.shortName = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "companyId=" + companyId +
+                ", parentId=" + parentId +
+                ", companyName='" + companyName + '\'' +
+                ", shortName='" + shortName + '\'' +
+                '}';
     }
 }

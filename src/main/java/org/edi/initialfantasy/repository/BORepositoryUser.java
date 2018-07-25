@@ -19,11 +19,23 @@ public class BORepositoryUser implements IBORepositoryUser {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 账户密码查询用户
+     * @param account
+     * @param password
+     * @return
+     */
     @Override
     public User getUserBySelect(String account, String password){
         return userMapper.getUserBySelect(account,password);
     }
 
+    /**
+     * 账户公司查询用户
+     * @param account
+     * @param companyId
+     * @return
+     */
     @Override
     public User getUserByCompanyId(String account,Integer companyId){
         User user = userMapper.getUserByCompanyId(account,companyId);
@@ -33,6 +45,11 @@ public class BORepositoryUser implements IBORepositoryUser {
         return user;
     }
 
+    /**
+     * 名字查询用户
+     * @param account
+     * @return
+     */
     @Override
     public User getUserByName(String account){
         return userMapper.getUserByName(account);

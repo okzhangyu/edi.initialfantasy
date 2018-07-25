@@ -17,6 +17,12 @@ public class BORepositoryCompany implements IBORepositoryCompany {
     @Autowired
     private CompanyMapper companyMapper;
 
+
+    /**
+     * 验证公司
+     * @param companyName
+     * @return
+     */
     @Override
     public Company serchCompanyId(String companyName){
         Company company =companyMapper.serchCompanyId(companyName);
