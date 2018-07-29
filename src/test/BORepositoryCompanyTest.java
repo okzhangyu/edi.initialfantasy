@@ -7,7 +7,12 @@ import org.edi.freamwork.exception.BusinessException;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.CompanyMapper;
+import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +20,8 @@ import java.io.InputStream;
 /**
  * Created by asus on 2018/7/25.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring-mybatis.xml")
 public class BORepositoryCompanyTest {
     public SqlSession getSqlSession() throws IOException {
         String resource = "mybatis-config.xml";
@@ -45,5 +52,13 @@ public class BORepositoryCompanyTest {
     public void serchCompanyIdTest()throws IOException{
         Company company =serchCompanyId("北京奥维奥科技有限公司");
         System.out.println(company.toString());
+    }
+
+    @Autowired
+    private IBORepositoryCompany boRepositoryCompany;
+
+    @Test
+    public void testCompanyBoRepository(){
+        boRepositoryCompany.serchCompanyId("北京奥维奥科技有限公司");
     }
 }
