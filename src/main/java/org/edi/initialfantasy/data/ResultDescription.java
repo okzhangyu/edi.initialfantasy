@@ -12,6 +12,8 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String FAIL = "fail";
 
+    public static final String DOCENTRY_IS_NULL ="the value of docentry is empty";
+
     public static String TOKEN_IS_EMPTY = "the value of token is empty";
 
     public static String TOKEN_IS_EXPIRED = "the token has expired";
