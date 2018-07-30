@@ -26,7 +26,7 @@
     </update>
 
     <update id="updateActive"  parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth">
-        UPDATE AVA_IF_USERAUTH SET is_active=#{isActive} where user_id=#{userId}
+        UPDATE AVA_IF_USERAUTH SET is_active=#{isActive},auth_token=#{authToken} where user_id=#{userId}
     </update>
 
     <select id="serchAuthByToken" resultMap="BaseResultMap">
