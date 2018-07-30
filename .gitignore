@@ -100,3 +100,4 @@ out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/mybatis-config.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_Company.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_User.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_Userauth.xml
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/Seq_DocEntry.sql
