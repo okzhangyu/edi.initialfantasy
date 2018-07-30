@@ -10,6 +10,6 @@
 
 
     <select id="serchCompanyId" resultMap="BaseResultMap">
-        SELECT * FROM Company WHERE companyName=#{companyName}
+        SELECT * FROM AVA_IF_COMPANY WHERE companyName=#{companyName}
     </select>
 </mapper>

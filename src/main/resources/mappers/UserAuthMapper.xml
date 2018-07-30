@@ -11,25 +11,25 @@
     </resultMap>
 
     <insert id="saveLoginRecord" parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth" >
-        insert into USERAUTH(user_id,auth_id,auth_type,auth_token,auth_expires,is_active)
+        insert into AVA_IF_USERAUTH(user_id,auth_id,auth_type,auth_token,auth_expires,is_active)
         values(#{userId},#{authId},#{authType},#{authToken},#{authExpires},#{isActive})
     </insert>
 
 
     <select id="serchLoginRecord" resultMap="BaseResultMap">
-        SELECT * FROM USERAUTH WHERE user_id=#{userName}
+        SELECT * FROM AVA_IF_USERAUTH WHERE user_id=#{userName}
     </select>
 
 
     <update id="updateAuthExpires"  parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth">
-        UPDATE USERAUTH SET auth_expires=#{authExpires} where user_id=#{userId}
+        UPDATE AVA_IF_USERAUTH SET auth_expires=#{authExpires} where user_id=#{userId}
     </update>
 
     <update id="updateActive"  parameterType="org.edi.initialfantasy.bo.userauthrization.UserAuth">
-        UPDATE USERAUTH SET is_active=#{isActive} where user_id=#{userId}
+        UPDATE AVA_IF_USERAUTH SET is_active=#{isActive} where user_id=#{userId}
     </update>
 
     <select id="serchAuthByToken" resultMap="BaseResultMap">
-        SELECT * FROM USERAUTH WHERE auth_token=#{authToken}
+        SELECT * FROM AVA_IF_USERAUTH WHERE auth_token=#{authToken}
     </select>
 </mapper>
