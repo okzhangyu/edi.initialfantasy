@@ -94,6 +94,11 @@ public class UserAuth implements IUserAuth {
         this.isActive = isActive;
     }
 
+    public UserAuth(String userId,String authToken,String isActive) {
+        this.userId = userId;
+        this.authToken = authToken;
+        this.isActive = isActive;
+    }
     @Override
     public String toString() {
         return "UserAuth{" +

@@ -47,7 +47,42 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         return userAuthMapper.serchAuthByToken(token);
     }
 
+
+
+
     @Override
+    public UserAuthrizationResult processUserLoginRecord(User user,long NextDayTimeMillis){
+        UserAuthrizationResult uaResult = new UserAuthrizationResult();
+        //查询用户历史登录记录
+        UserAuth userRecord = userAuthMapper.serchLoginRecord(user.getUserName());
+        String authToken = UUIDUtil.randomUUID32();
+        if(userRecord==null) {
+            //没有用户记录则新建
+            userRecord = new UserAuth(user.getUserName(), user.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
+            userAuthMapper.saveLoginRecord(userRecord);
+            uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
+        }else{
+            //存在用户记录则得到当前登录时间的时间戳，和记录时间戳进行比对，在有效期内则返回，否则更新
+            Long currentTimeMillis = System.currentTimeMillis();
+            if(currentTimeMillis<userRecord.getAuthExpires()){
+                uaResult = new UserAuthrizationResult(authToken,userRecord.getAuthExpires());
+            }else{
+                UserAuth userAuth = new UserAuth(userRecord.getUserId(),NextDayTimeMillis);
+                userAuthMapper.updateAuthExpires(userAuth);
+                uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
+            }
+            UserAuth uauth = new UserAuth(userRecord.getUserId(),authToken,"Y");
+            userAuthMapper.updateActive(uauth);
+        }
+        return  uaResult;
+    }
+
+
+
+
+
+
+   /* @Override
     public UserAuthrizationResult processUserLoginRecord(User user,long NextDayTimeMillis){
         UserAuthrizationResult uaResult = new UserAuthrizationResult();
         //查询用户历史登录记录
@@ -72,7 +107,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
             userAuthMapper.updateActive(uauth);
         }
         return  uaResult;
-    }
+    }*/
 
 
 }

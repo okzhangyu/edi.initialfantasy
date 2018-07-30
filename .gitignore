@@ -101,3 +101,8 @@ out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_Co
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_User.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/datastructures/DS_WM_Userauth.xml
 out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/Seq_DocEntry.sql
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/Company.sql
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/StockReport.sql
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/StockTask.sql
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/User.sql
+out/artifacts/edi_stocktask_Web_exploded/WEB-INF/classes/sql/UserAuth.sql
