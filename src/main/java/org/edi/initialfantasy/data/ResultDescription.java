@@ -29,4 +29,8 @@ public class ResultDescription extends OpResultDescription {
     public static  String PARAMETER_IS_NULL= "the parameter info is null";
 
     public static  String CODEBAR_IS_NULL= "the codebar info is null";
+
+    public static  String DOCENTRY_IS_NULL= "the docEntry info is null";
+
+    public static  String DOCTYPE_IS_NULL= "the docType info is null";
 }
