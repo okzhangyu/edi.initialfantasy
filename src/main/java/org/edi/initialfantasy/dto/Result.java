@@ -46,4 +46,10 @@ public class Result<T> implements IResult<T>{
         this.message = message;
         this.data = data;
     }
+
+    public Result(String code,Exception e){
+        this.code = code;
+        this.message = "failed:"+(e.getCause()==null?e.getMessage():e.getCause().toString());
+        this.data = null;
+    }
 }
