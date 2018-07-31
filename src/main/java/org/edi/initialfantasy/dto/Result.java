@@ -1,5 +1,7 @@
 package org.edi.initialfantasy.dto;
 
+import org.edi.freamwork.bo.BusinessObjectException;
+
 import java.util.List;
 
 public class Result<T> implements IResult<T>{
@@ -50,6 +52,10 @@ public class Result<T> implements IResult<T>{
     public Result(String code,Exception e){
         this.code = code;
         this.message = "failed:"+(e.getCause()==null?e.getMessage():e.getCause().toString());
-        this.data = null;
+    }
+
+    public Result(BusinessObjectException e){
+        this.code = e.getCode();
+        this.message =e.getMessage();
     }
 }
