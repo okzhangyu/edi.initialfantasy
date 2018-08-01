@@ -13,5 +13,5 @@ public interface IBORepositoryUserAuth {
     void updateAuthExpires(UserAuth userAuth);
     void updateActive(UserAuth userAuth);
     UserAuth serchAuthByToken(String token);
-    public UserAuthrizationResult processUserLoginRecord(User user, long NextDayTimeMillis);
+    public UserAuthrizationResult processUserLoginRecord(User user, long nextDayTimeMillis);
 }
