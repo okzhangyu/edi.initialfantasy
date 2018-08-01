@@ -29,4 +29,8 @@ public class UUIDUtil {
 		return uuid;
 	}
 
+	public static String randomUUID19(){
+		return randomUUID32().substring(0,19);
+	}
+
 }
