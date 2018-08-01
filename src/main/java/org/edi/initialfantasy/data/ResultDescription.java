@@ -25,6 +25,8 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String USER_IS_NONEXISTENT = "the user is not existent";
 
+    public static final String USERNAME_OR_PASSWORD_ERROR = "用户名或密码错误";
+
     public static final String USERPASSWORD_IS_ERROR = "the password of user is error";
 
     public static final String B1DOCENTRY_IS_EXISTENT = "the bill have been generated";
