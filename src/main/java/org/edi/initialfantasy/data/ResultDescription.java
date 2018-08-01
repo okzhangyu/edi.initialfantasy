@@ -13,6 +13,7 @@ public class ResultDescription extends OpResultDescription {
     public static final String FAIL = "fail";
 
 
+
     public static final String DOCENTRY_IS_NULL = "DOCENTRY信息为空！";
 
     public static final String TOKEN_IS_EMPTY = "TOKEN信息为空！";
@@ -36,4 +37,5 @@ public class ResultDescription extends OpResultDescription {
     public static final String DOCTYPE_IS_NULL= "DOCTYPE信息为空！";
 
     public static final String TOKEN_IS_INVAILD= "登录信息已过期！";
+
 }
