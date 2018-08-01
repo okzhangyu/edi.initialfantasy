@@ -86,6 +86,7 @@ public class UserService implements IUserService{
         UserAuth auth = boRepositoryUserAuth.serchAuthByToken(token);
         try {
             auth.setIsActive("N");
+            auth.setAuthToken("");
             boRepositoryUserAuth.updateActive(auth);
             result = new Result("0", "ok", null);
         }catch (Exception e){
