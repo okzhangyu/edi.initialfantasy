@@ -27,10 +27,4 @@ public class DataConvert {
         date = calendar.getTime();
         return date;
     }
-
-    public static Long getHalfHour() {
-       Long currentTimeMillis = System.currentTimeMillis();
-        Long afterHalfHourTimeMillis = currentTimeMillis+30*60*1000;
-        return afterHalfHourTimeMillis;
-    }
 }

@@ -15,16 +15,13 @@ public class TokenVerification {
     @Autowired
     private UserAuthMapper userAuthMapper;
 
-    public  String verification(String token)  {
+    public  String verification(String token){
         if(token == null || token.isEmpty()){
             return ResultDescription.TOKEN_IS_EMPTY;
         }
         UserAuth userAuth = userAuthMapper.serchAuthByToken(token);
         if(userAuth == null){
             return ResultDescription.TOKEN_IS_ERROR;
-        }
-        if(userAuth.getAuthExpires()<System.currentTimeMillis()){
-            return ResultDescription.TOKEN_IS_INVAILD;
         }
         if(userAuth.getIsActive().trim().equals("Y")){
             return ResultDescription.OK;
