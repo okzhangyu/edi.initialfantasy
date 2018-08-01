@@ -23,6 +23,9 @@ public class TokenVerification {
         if(userAuth == null){
             return ResultDescription.TOKEN_IS_ERROR;
         }
+        if(userAuth.getAuthExpires()<System.currentTimeMillis()){
+            return ResultDescription.TOKEN_IS_INVAILD;
+        }
         if(userAuth.getIsActive().trim().equals("Y")){
             return ResultDescription.OK;
         }else {
