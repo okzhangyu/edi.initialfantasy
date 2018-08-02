@@ -1,17 +1,23 @@
 package org.edi.initialfantasy.filter;
 
+import org.edi.freamwork.data.operation.OpResultDescription;
+import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.data.ServicePath;
 import org.edi.initialfantasy.dto.AuthrizationException;
+import org.edi.initialfantasy.dto.Result;
 import org.edi.initialfantasy.util.TokenVerification;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
@@ -29,30 +35,19 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
         //记录请求日志
-        try {
+        try{
             MultivaluedMap<String, String> params = containerRequestContext.getUriInfo().getQueryParameters();
-            //判断token是否有效--除登陆接口外
-            String msg = tokenVerificate.verification(params.getFirst(ServicePath.TOKEN_NAMER));
-            if(!msg.equals("ok")){
-                throw new AuthrizationException(msg);
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-            throw e;
+            tokenVerificate.verification(params.getFirst(ServicePath.TOKEN_NAMER));
+        }catch (AuthrizationException e){
+            Response response = Response.ok(new Result(e)).type(MediaType.APPLICATION_JSON).build();
+            throw new WebApplicationException(response);
         }
     }
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
-        //记录返回日志
-            try{
-
-            }catch (AuthrizationException e){
-
-            }catch (Exception e){
-
-            }
-
+        //记录返回日
+        // containerResponseContext.getHeaders().add("Content-Type", "application/json; charset=utf-8");
     }
 
 }
