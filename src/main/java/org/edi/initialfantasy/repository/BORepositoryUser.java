@@ -6,12 +6,11 @@ import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by asus on 2018/7/6.
  */
-@Transactional
+
 @Component(value="boRepositoryUser")
 public class BORepositoryUser implements IBORepositoryUser {
 
