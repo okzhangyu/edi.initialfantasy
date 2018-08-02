@@ -38,4 +38,5 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String TOKEN_IS_INVAILD= "登录信息已过期！";
 
+    public static final String DETAIL_IS_NULL= "汇报明细为空！";
 }
