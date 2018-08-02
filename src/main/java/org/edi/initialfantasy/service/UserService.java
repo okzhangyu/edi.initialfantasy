@@ -48,7 +48,7 @@ public class UserService implements IUserService{
     @JSONP(queryParam="callback")
     @Produces("application/x-javascript;charset=utf-8")
     @Path("/userauthrization")
-    public IResult<IUserAuthrizationResult> Login(@QueryParam(ServicePath.TOKEN_NAMER)String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
+    public IResult<IUserAuthrizationResult> Login(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
         Result rs ;
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {
