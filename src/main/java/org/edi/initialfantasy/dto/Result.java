@@ -58,4 +58,9 @@ public class Result<T> implements IResult<T>{
         this.code = e.getCode();
         this.message =e.getMessage();
     }
+
+    public Result(AuthrizationException e){
+        this.code = e.getCode();
+        this.message =e.getMessage();
+    }
 }

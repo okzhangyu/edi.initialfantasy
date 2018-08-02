@@ -12,4 +12,5 @@ public class ServicePath {
 
     public static final String TOKEN_NAMER = "token";
 
+
 }
