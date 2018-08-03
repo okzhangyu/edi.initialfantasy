@@ -16,7 +16,6 @@ import org.edi.initialfantasy.filter.UserRequest;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
-import org.glassfish.jersey.server.JSONP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,10 +44,9 @@ public class UserService implements IUserService{
 
     @GET
     @Override
-    @JSONP(queryParam="callback")
-    @Produces("application/x-javascript;charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/userauthrization")
-    public IResult<IUserAuthrizationResult> Login(@QueryParam(ServicePath.TOKEN_NAMER)String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
+    public IResult<IUserAuthrizationResult> Login(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
         Result rs ;
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {

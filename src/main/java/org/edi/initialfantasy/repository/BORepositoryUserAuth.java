@@ -7,13 +7,12 @@ import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.edi.initialfantasy.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by asus on 2018/7/6.
  */
 
-@Transactional
+
 @Component(value="boRepositoryUserAuth")
 public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
 
@@ -58,7 +57,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         String authToken = UUIDUtil.randomUUID19()+String.valueOf(NextDayTimeMillis);
         if(userRecord==null) {
             //没有用户记录则新建
-            userRecord = new UserAuth(user.getUserName(), user.getIsMobileUser(), "客户", authToken, NextDayTimeMillis, "Y");
+            userRecord = new UserAuth(user.getUserName(),String.valueOf(user.getUserId()), "客户", authToken, NextDayTimeMillis, "Y");
             userAuthMapper.saveLoginRecord(userRecord);
             uaResult = new UserAuthrizationResult(authToken,NextDayTimeMillis);
         }else{
@@ -73,7 +72,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     }
 
 
-    
+
 
 
 }

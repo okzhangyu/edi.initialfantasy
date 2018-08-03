@@ -20,6 +20,6 @@
   </select>
 
   <select id="getUserByName" resultMap="BaseResultMap">
-  SELECT * FROM AVA_IF_VIEW_USER WHERE is_mobile_user=#{account}
+  SELECT * FROM AVA_IF_VIEW_USER WHERE user_name=#{account}
   </select>
 </mapper>
