@@ -12,5 +12,9 @@ public class ServicePath {
 
     public static final String TOKEN_NAMER = "token";
 
+    public final static String SERVICE_BEGININDEX = "beginIndex";
+
+    public final static String SERVICE_LIMIT = "limit";
+
 
 }

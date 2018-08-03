@@ -35,4 +35,8 @@ public class ResultDescription extends OpResultDescription {
     public static final String DOCTYPE_IS_NULL= "[DOCTYPE]信息为空";
 
     public static final String DETAIL_IS_NULL= "汇报明细为空";
+
+    public static final String TASK_IS_EMPTY= "未找到汇报库存任务";
+
+
 }
