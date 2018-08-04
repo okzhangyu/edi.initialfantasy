@@ -36,9 +36,11 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String DETAIL_IS_NULL= "汇报明细为空";
 
-    public static final String TASK_IS_EMPTY= "未找到汇报库存任务";
+    public static final String REPORTTASK_IS_EMPTY= "未找到汇报库存任务";
 
-    public static final String REPORT_IS_EMPTY= "未找到库存任务汇报";
+    public static final String REPORT_IS_EMPTY= "未找到库存汇报";
+
+    public static final String TASK_IS_EMPTY= "未找到库存任务";
 
 
 }
