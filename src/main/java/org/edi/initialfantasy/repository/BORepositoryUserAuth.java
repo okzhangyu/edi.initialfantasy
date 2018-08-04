@@ -29,10 +29,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     public void saveLoginRecord(UserAuth userAuth){
         try{
             userAuthMapper.saveLoginRecord(userAuth);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -41,10 +38,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     public UserAuth serchLoginRecord(String userName){
         try {
             return userAuthMapper.serchLoginRecord(userName);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -53,10 +47,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     public void updateAuthExpires(UserAuth userAuth){
         try {
             userAuthMapper.updateAuthExpires(userAuth);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -65,10 +56,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     public void updateActive(UserAuth userAuth){
         try {
             userAuthMapper.updateActive(userAuth);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -77,10 +65,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
     public UserAuth serchAuthByToken(String token){
         try {
             return userAuthMapper.serchAuthByToken(token);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -109,10 +94,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
                 userAuthMapper.updateActive(uauth);
             }
             return uaResult;
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }

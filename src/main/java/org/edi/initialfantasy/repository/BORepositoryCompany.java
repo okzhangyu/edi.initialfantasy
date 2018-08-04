@@ -36,10 +36,7 @@ public class BORepositoryCompany implements IBORepositoryCompany {
                 throw new BusinessException(ResultDescription.COMPANY_IS_NONEXISTENT);
             }
             return company;
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
 

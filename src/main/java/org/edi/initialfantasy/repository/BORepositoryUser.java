@@ -32,10 +32,7 @@ public class BORepositoryUser implements IBORepositoryUser {
     public User getUserBySelect(String account, String password){
         try{
             return userMapper.getUserBySelect(account,password);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -54,10 +51,7 @@ public class BORepositoryUser implements IBORepositoryUser {
                 throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
             }
             return user;
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -71,10 +65,7 @@ public class BORepositoryUser implements IBORepositoryUser {
     public User getUserByName(String account){
         try {
             return userMapper.getUserByName(account);
-        }catch (CannotGetJdbcConnectionException e){
-            throw new DBException(OpResultCode.DATABASE_CONNECT_ERROR,OpResultDescription.DATABASE_CONNECT_ERROR);
-        }
-        catch (Exception e){
+        }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
