@@ -1,10 +1,14 @@
 package org.edi.initialfantasy.repository;
 
+import org.edi.freamwork.data.operation.OpResultCode;
+import org.edi.freamwork.data.operation.OpResultDescription;
 import org.edi.freamwork.exception.BusinessException;
+import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +30,11 @@ public class BORepositoryUser implements IBORepositoryUser {
      */
     @Override
     public User getUserBySelect(String account, String password){
-        return userMapper.getUserBySelect(account,password);
+        try{
+            return userMapper.getUserBySelect(account,password);
+        }catch (Exception e){
+            throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
+        }
     }
 
     /**
@@ -37,11 +45,15 @@ public class BORepositoryUser implements IBORepositoryUser {
      */
     @Override
     public User getUserByCompanyId(String account,Integer companyId){
-        User user = userMapper.getUserByCompanyId(account,companyId);
-        if(user==null){
-            throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
+        try{
+            User user = userMapper.getUserByCompanyId(account,companyId);
+            if(user==null){
+                throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
+            }
+            return user;
+        }catch (Exception e){
+            throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
-        return user;
     }
 
     /**
@@ -51,7 +63,11 @@ public class BORepositoryUser implements IBORepositoryUser {
      */
     @Override
     public User getUserByName(String account){
-        return userMapper.getUserByName(account);
+        try {
+            return userMapper.getUserByName(account);
+        }catch (Exception e){
+            throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
+        }
     }
 
 }
