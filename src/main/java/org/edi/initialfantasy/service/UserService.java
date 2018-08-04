@@ -1,6 +1,7 @@
 package org.edi.initialfantasy.service;
 
 import org.edi.freamwork.cryptogram.MD5Util;
+import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
@@ -63,6 +64,8 @@ public class UserService implements IUserService{
             } else {
                 rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,ResultDescription.USERPASSWORD_IS_ERROR, listResult);
             }
+        }catch (DBException e) {
+            rs = new Result(e);
         }catch (Exception e) {
             e.printStackTrace();
             rs = new Result(ResultCode.FAIL, e);
