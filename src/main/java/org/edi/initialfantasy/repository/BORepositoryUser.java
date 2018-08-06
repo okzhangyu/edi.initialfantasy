@@ -47,9 +47,6 @@ public class BORepositoryUser implements IBORepositoryUser {
     public User getUserByCompanyId(String account,Integer companyId){
         try{
             User user = userMapper.getUserByCompanyId(account,companyId);
-            if(user==null){
-                throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
-            }
             return user;
         }catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
