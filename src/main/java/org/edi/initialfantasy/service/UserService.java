@@ -1,6 +1,7 @@
 package org.edi.initialfantasy.service;
 
 import org.edi.freamwork.cryptogram.MD5Util;
+import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
@@ -66,7 +67,10 @@ public class UserService implements IUserService{
             }
         }catch (DBException e) {
             rs = new Result(e);
-        }catch (Exception e) {
+        }catch (BusinessException e){
+            rs = new Result(e);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             rs = new Result(ResultCode.FAIL, e);
         }
