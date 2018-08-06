@@ -31,7 +31,7 @@ import java.util.List;
  * @date 2018/5/25
  */
 @Path("/v1")
-@Transactional
+@UserRequest
 public class UserService implements IUserService{
 
     @Autowired
@@ -53,7 +53,13 @@ public class UserService implements IUserService{
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {
             Company company = boRepositoryCompany.serchCompanyId(companyName);
+            if(company==null){
+                throw new BusinessException(ResultDescription.COMPANY_IS_NONEXISTENT);
+            }
             User loginUser =  boRepositoryUser.getUserByCompanyId(userName,company.getCompanyId());
+            if(loginUser==null){
+                throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
+            }
             String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
             if (hmacPassword.equals(password)) {
                 //用户密码正确，获取截止到登录日期后一天的13位时间戳作为有效期

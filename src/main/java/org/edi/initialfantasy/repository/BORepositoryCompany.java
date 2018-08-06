@@ -30,9 +30,6 @@ public class BORepositoryCompany implements IBORepositoryCompany {
     public Company serchCompanyId(String companyName){
         try{
             Company company =companyMapper.serchCompanyId(companyName);
-            if(company==null){
-                throw new BusinessException(ResultCode.COMPANY_IS_NONEXISTENT,ResultDescription.COMPANY_IS_NONEXISTENT);
-            }
             return company;
         } catch (BusinessException e){
             throw e;
