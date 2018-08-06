@@ -5,10 +5,10 @@ import org.edi.freamwork.data.operation.OpResultDescription;
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.user.User;
+import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -48,7 +48,10 @@ public class BORepositoryUser implements IBORepositoryUser {
         try{
             User user = userMapper.getUserByCompanyId(account,companyId);
             return user;
-        }catch (Exception e){
+        } catch (BusinessException e){
+            throw e;
+        }
+        catch (Exception e){
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }

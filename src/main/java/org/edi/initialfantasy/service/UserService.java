@@ -73,7 +73,10 @@ public class UserService implements IUserService{
             }
         }catch (DBException e) {
             rs = new Result(e);
-        }catch (Exception e) {
+        }catch (BusinessException e){
+            rs = new Result(e);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             rs = new Result(ResultCode.FAIL, e);
         }

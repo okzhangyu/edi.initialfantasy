@@ -1,6 +1,7 @@
 package org.edi.initialfantasy.dto;
 
 import org.edi.freamwork.bo.BusinessObjectException;
+import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
 
 import java.util.List;
@@ -66,6 +67,11 @@ public class Result<T> implements IResult<T>{
     }
 
     public Result(DBException e){
+        this.code = e.getCode();
+        this.message = e.getMessage();
+    }
+
+    public Result(BusinessException e){
         this.code = e.getCode();
         this.message = e.getMessage();
     }
