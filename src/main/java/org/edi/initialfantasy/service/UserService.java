@@ -19,7 +19,6 @@ import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -31,7 +30,6 @@ import java.util.List;
  * @date 2018/5/25
  */
 @Path("/v1")
-@UserRequest
 public class UserService implements IUserService{
 
     @Autowired
