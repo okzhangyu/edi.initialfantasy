@@ -56,4 +56,15 @@ public class ResultCode extends OpResultCode{
      * 条码信息为空
      */
     public static final String CODEBAR_IS_NULL= "1101009";
+
+
+    public static final String DOCTYPE_IS_NULL= "1101010";
+
+    public static final String DETAIL_IS_NULL= "1101011";
+
+    public static final String REPORTTASK_IS_EMPTY= "1101012";
+
+    public static final String REPORT_IS_EMPTY= "1101013";
+
+    public static final String TASK_IS_EMPTY= "1101014";
 }

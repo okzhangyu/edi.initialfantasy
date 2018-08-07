@@ -1,7 +1,11 @@
 package org.edi.initialfantasy.repository;
 
+import org.edi.freamwork.data.operation.OpResultCode;
+import org.edi.freamwork.data.operation.OpResultDescription;
 import org.edi.freamwork.exception.BusinessException;
+import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.company.Company;
+import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.CompanyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +28,14 @@ public class BORepositoryCompany implements IBORepositoryCompany {
      */
     @Override
     public Company serchCompanyId(String companyName){
-        Company company =companyMapper.serchCompanyId(companyName);
-        if(company==null){
-            throw new BusinessException(ResultDescription.COMPANY_IS_NONEXISTENT);
+        try{
+            Company company =companyMapper.serchCompanyId(companyName);
+            return company;
+        } catch (BusinessException e){
+            throw e;
+        }catch (Exception e){
+            throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
-        return company;
+
     }
 }
