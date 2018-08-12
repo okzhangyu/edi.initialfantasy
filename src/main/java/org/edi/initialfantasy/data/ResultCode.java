@@ -67,4 +67,8 @@ public class ResultCode extends OpResultCode{
     public static final String REPORT_IS_EMPTY= "1101013";
 
     public static final String TASK_IS_EMPTY= "1101014";
+
+    public static final String MATERIALITEM_IS_NULL= "1101015";
+
+    public static final String CODEBAR_IS_REPEAT= "1101016";
 }

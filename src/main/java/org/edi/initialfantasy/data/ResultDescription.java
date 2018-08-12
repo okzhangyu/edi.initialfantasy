@@ -42,5 +42,7 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String TASK_IS_EMPTY= "未找到库存任务";
 
+    public static final String MATERIALITEM_IS_NULL= "物料条码信息为空";
 
+    public static final String CODEBAR_IS_REPEAT= "汇报行条码信息不可重复";
 }
