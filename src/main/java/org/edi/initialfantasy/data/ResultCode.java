@@ -78,6 +78,6 @@ public class ResultCode extends OpResultCode{
 
     public static final String STOCK_BASELINE_IS_NULL = "1101019";
 
-
+    public static final String BARCODE_ANALYSIS_IS_FAIL = "1101020";
 
 }
