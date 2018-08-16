@@ -1,10 +1,12 @@
 package org.edi.initialfantasy.bo.department;
 
+import org.edi.freamwork.bo.ISimpleBO;
+
 /**
  * @author Fancy
  * @date 2018/5/17
  */
-public interface IDepartment {
+public interface IDepartment extends ISimpleBO {
 
     /**
      * 获取部门Id
