@@ -71,4 +71,13 @@ public class ResultCode extends OpResultCode{
     public static final String MATERIALITEM_IS_NULL= "1101015";
 
     public static final String CODEBAR_IS_REPEAT= "1101016";
+
+    public static final String STOCK_BASETYPE_IS_NULL = "1101017";
+
+    public static final String STOCK_BASEENTRY_IS_NULL = "1101018";
+
+    public static final String STOCK_BASELINE_IS_NULL = "1101019";
+
+
+
 }

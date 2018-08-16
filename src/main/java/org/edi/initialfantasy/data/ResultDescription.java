@@ -45,4 +45,14 @@ public class ResultDescription extends OpResultDescription {
     public static final String MATERIALITEM_IS_NULL= "物料条码信息为空";
 
     public static final String CODEBAR_IS_REPEAT= "汇报行条码信息不可重复";
+
+    public static final String STOCK_BASETYPE_IS_NULL = "[baseType]信息为空";
+
+    public static final String STOCK_BASEENTRY_IS_NULL = "[baseEntry]信息为空";
+
+    public static final String STOCK_BASELINE_IS_NULL = "[baseLine]信息为空";
+
+    public static final String CODEBARINFO_IS_EMPTY = "条形码与对应任务行的物料不匹配";
+
+
 }
