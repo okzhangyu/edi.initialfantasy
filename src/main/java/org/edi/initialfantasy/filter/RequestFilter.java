@@ -30,6 +30,7 @@ import java.io.IOException;
 @Priority(Priorities.USER)
 public class RequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
 
+
     @Autowired
     private TokenVerification tokenVerificate;
     @Override

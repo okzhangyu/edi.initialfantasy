@@ -1,10 +1,12 @@
 package org.edi.initialfantasy.bo.company;
 
+import org.edi.freamwork.bo.ISimpleBO;
+
 /**
  * @author Fancy
  * @date 2018/5/17
  */
-public interface ICompany {
+public interface ICompany extends ISimpleBO{
 
 
     /**

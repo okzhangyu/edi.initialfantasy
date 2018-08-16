@@ -1,10 +1,12 @@
 package org.edi.initialfantasy.bo.company;
 
+import org.edi.freamwork.bo.SimpleBO;
+
 /**
  * @author Fancy
  * @date 2018/5/17
  */
-public class Company implements ICompany {
+public class Company extends SimpleBO implements ICompany {
 
 
     private Integer companyId;
