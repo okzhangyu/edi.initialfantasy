@@ -54,7 +54,7 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String CODEBARINFO_IS_EMPTY = "条形码与对应任务行的物料不匹配";
 
-    public static final String BARCODE_ANALYSIS_IS_FAIL = "条码解析失败";
+    public static final String BARCODE_ANALYSIS_IS_FAIL = "条码[%s]解析失败";
 
 
 }
