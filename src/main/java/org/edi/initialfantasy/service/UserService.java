@@ -52,11 +52,11 @@ public class UserService implements IUserService{
         try {
             Company company = boRepositoryCompany.serchCompanyId(companyName);
             if(company==null){
-                throw new BusinessException(ResultDescription.COMPANY_IS_NONEXISTENT);
+                throw new BusinessException(ResultCode.COMPANY_IS_NONEXISTENT,ResultDescription.COMPANY_IS_NONEXISTENT);
             }
             User loginUser =  boRepositoryUser.getUserByCompanyId(userName,company.getCompanyId());
             if(loginUser==null){
-                throw new BusinessException(ResultDescription.USER_IS_NONEXISTENT);
+                throw new BusinessException(ResultCode.USER_IS_NONEXISTENT,ResultDescription.USER_IS_NONEXISTENT);
             }
             String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
             if (hmacPassword.equals(password)) {
@@ -69,12 +69,11 @@ public class UserService implements IUserService{
             } else {
                 rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,ResultDescription.USERPASSWORD_IS_ERROR, listResult);
             }
-        }catch (DBException e) {
+        }catch (DBException e){
             rs = new Result(e);
         }catch (BusinessException e){
             rs = new Result(e);
-        }
-        catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             rs = new Result(ResultCode.FAIL, e);
         }
