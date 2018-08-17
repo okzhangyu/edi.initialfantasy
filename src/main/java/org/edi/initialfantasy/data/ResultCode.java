@@ -42,21 +42,12 @@ public class ResultCode extends OpResultCode{
     public static final String USERPASSWORD_IS_ERROR = "1101006";
 
 
-    /**
-     * B1单据已生成
-     */
-    public static final String B1DOCENTRY_IS_EXISTENT = "1101007";
 
-    /**
-     * 参数信息为空
-     */
+   /* public static final String B1DOCENTRY_IS_EXISTENT = "1101007";
+
     public static final String PARAMETER_IS_NULL= "1101108";
 
-    /**
-     * 条码信息为空
-     */
     public static final String CODEBAR_IS_NULL= "1101009";
-
 
     public static final String DOCTYPE_IS_NULL= "1101010";
 
@@ -78,6 +69,6 @@ public class ResultCode extends OpResultCode{
 
     public static final String STOCK_BASELINE_IS_NULL = "1101019";
 
-    public static final String BARCODE_ANALYSIS_IS_FAIL = "1101020";
+    public static final String BARCODE_ANALYSIS_IS_FAIL = "1101020";*/
 
 }

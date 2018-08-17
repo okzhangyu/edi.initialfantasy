@@ -12,12 +12,12 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-            <jersey.version>2.4.1</jersey.version>
-            <java-version>1.6</java-version>
-            <spring.version>4.0.2.RELEASE</spring.version>
-            <mybatis.version>3.2.6</mybatis.version>
-            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <org.aspectj-version>1.7.3</org.aspectj-version>
+        <jersey.version>2.4.1</jersey.version>
+        <java-version>1.6</java-version>
+        <spring.version>4.0.2.RELEASE</spring.version>
+        <mybatis.version>3.2.6</mybatis.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.aspectj-version>1.7.3</org.aspectj-version>
     </properties>
     <dependencies>
 
@@ -158,9 +158,9 @@
         </dependency>
 
         <dependency>
-        <groupId>org.edi</groupId>
-        <artifactId>edi.freamwork</artifactId>
-        <version>0.1.0</version>
+            <groupId>org.edi</groupId>
+            <artifactId>edi.freamwork</artifactId>
+            <version>0.1.0</version>
         </dependency>
 
         <dependency>
@@ -168,12 +168,6 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>6.4.0.jre8</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
         </dependency>
 
     </dependencies>

@@ -1,6 +1,5 @@
 package org.edi.initialfantasy.filter;
 
-import org.apache.log4j.Logger;
 import org.edi.initialfantasy.data.ServicePath;
 import org.edi.initialfantasy.dto.AuthrizationException;
 import org.edi.initialfantasy.dto.Result;
@@ -28,14 +27,11 @@ import java.io.IOException;
 @UserRequest
 @Priority(Priorities.USER)
 public class RequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
-    private static Logger log = Logger.getLogger(RequestFilter.class);
-
 
     @Autowired
     private TokenVerification tokenVerificate;
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-             log.warn(containerRequestContext.getDate());
         //记录请求日志
         try{
             MultivaluedMap<String, String> params = containerRequestContext.getUriInfo().getQueryParameters();
@@ -46,10 +42,43 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
         }
     }
 
+
     @Override
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
         //记录返回日
         // containerResponseContext.getHeaders().add("Content-Type", "application/json; charset=utf-8");
     }
 
+
+    /*public ContainerRequest requestFilter(ContainerRequest request) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        InputStream in = request.getEntityInputStream();
+        final StringBuilder b = new StringBuilder();
+        try {
+            if (in.available() > 0) {
+                ReaderWriter.writeTo(in, out);
+                byte[] requestEntity = out.toByteArray();
+                printEntity(b, requestEntity);
+
+                request.setEntityInputStream(new ByteArrayInputStream(requestEntity));
+            }
+            return request;
+        } catch (IOException ex) {
+            throw new ContainerException(ex);
+        }
+
+    }
+
+
+    private void printEntity(StringBuilder b, byte[] entity) throws IOException {
+        if (entity.length == 0)
+            return;
+        b.append(new String(entity)).append("\n");
+        System.out.println("#### Intercepted Entity ####");
+        System.out.println(b.toString());
+        log.warn("------------------------------------------------------");
+        log.warn(b.toString());
+        log.warn("------------------------------------------------------");
+    }
+*/
 }
