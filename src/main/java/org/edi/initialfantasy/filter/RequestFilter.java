@@ -30,6 +30,7 @@ import java.io.IOException;
 public class RequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
     private static Logger log = Logger.getLogger(RequestFilter.class);
 
+
     @Autowired
     private TokenVerification tokenVerificate;
     @Override

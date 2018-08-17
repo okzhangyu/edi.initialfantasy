@@ -1,11 +1,13 @@
 package org.edi.initialfantasy.bo.userauthrization;
 
+import org.edi.freamwork.bo.ISimpleBO;
+
 /**
  * @author Fancy
  * 用户授权
  * @date 2018/5/17
  */
-public interface IUserAuth {
+public interface IUserAuth extends ISimpleBO {
     /**
      * 获取用户Id
      * @return

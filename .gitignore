@@ -32,3 +32,6 @@ out/
 .idea
 .cache
 *.iml
+.project
+.classpath
+.settings/
