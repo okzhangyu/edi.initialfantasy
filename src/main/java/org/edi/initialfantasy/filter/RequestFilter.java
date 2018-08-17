@@ -1,7 +1,6 @@
 package org.edi.initialfantasy.filter;
 
-import org.edi.freamwork.data.operation.OpResultDescription;
-import org.edi.initialfantasy.data.ResultDescription;
+import org.apache.log4j.Logger;
 import org.edi.initialfantasy.data.ServicePath;
 import org.edi.initialfantasy.dto.AuthrizationException;
 import org.edi.initialfantasy.dto.Result;
@@ -29,11 +28,13 @@ import java.io.IOException;
 @UserRequest
 @Priority(Priorities.USER)
 public class RequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
+    private static Logger log = Logger.getLogger(RequestFilter.class);
 
     @Autowired
     private TokenVerification tokenVerificate;
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+             log.warn(containerRequestContext.getDate());
         //记录请求日志
         try{
             MultivaluedMap<String, String> params = containerRequestContext.getUriInfo().getQueryParameters();
