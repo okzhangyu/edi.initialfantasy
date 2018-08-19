@@ -95,10 +95,14 @@ public class UserService implements IUserService{
             auth.setIsActive("N");
             auth.setAuthToken("");
             boRepositoryUserAuth.updateActive(auth);
-            result = new Result("0", "ok", null);
+            result = new Result(ResultCode.OK, ResultDescription.OK, null);
+        }catch (DBException e){
+            result = new Result(e);
+        }catch (BusinessException e){
+            result = new Result(e);
         }catch (Exception e){
             e.printStackTrace();
-            result = new Result("0", "failed:"+e.getCause(), null);
+            result = new Result(ResultCode.FAIL, e);
         }
         return result;
     }
