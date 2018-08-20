@@ -1,9 +1,9 @@
 package org.edi.initialfantasy.util;
 
+import org.edi.freamwork.exception.AuthrizationException;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
 import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
-import org.edi.initialfantasy.dto.AuthrizationException;
 import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

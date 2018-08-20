@@ -1,6 +1,6 @@
 package org.edi.initialfantasy.service;
 
-import org.edi.initialfantasy.dto.IResult;
+import org.edi.freamwork.data.IResult;
 
 /**
  * @author Fancy
