@@ -1,6 +1,8 @@
 package org.edi.initialfantasy.service;
 
 import org.edi.freamwork.cryptogram.MD5Util;
+import org.edi.freamwork.data.IResult;
+import org.edi.freamwork.data.Result;
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.company.Company;
@@ -10,9 +12,7 @@ import org.edi.initialfantasy.data.DataConvert;
 import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.data.ServicePath;
-import org.edi.initialfantasy.dto.IResult;
 import org.edi.initialfantasy.dto.IUserAuthrizationResult;
-import org.edi.initialfantasy.dto.Result;
 import org.edi.initialfantasy.dto.UserAuthrizationResult;
 import org.edi.initialfantasy.filter.UserRequest;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
@@ -65,7 +65,7 @@ public class UserService implements IUserService{
                 //对用户登录记录进行处理
                 UserAuthrizationResult uaResult = boRepositoryUserAuth.processUserLoginRecord(loginUser,NextDayTimeMillis);
                 listResult.add(uaResult);
-                rs = new Result(ResultCode.OK, ResultDescription.OK, listResult);
+                rs = new Result(ResultCode.SUCCESS, ResultDescription.OK, listResult);
             } else {
                 rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,ResultDescription.USERPASSWORD_IS_ERROR, listResult);
             }
@@ -95,7 +95,7 @@ public class UserService implements IUserService{
             auth.setIsActive("N");
             auth.setAuthToken("");
             boRepositoryUserAuth.updateActive(auth);
-            result = new Result(ResultCode.OK, ResultDescription.OK, null);
+            result = new Result(ResultCode.SUCCESS, ResultDescription.OK, null);
         }catch (DBException e){
             result = new Result(e);
         }catch (BusinessException e){
