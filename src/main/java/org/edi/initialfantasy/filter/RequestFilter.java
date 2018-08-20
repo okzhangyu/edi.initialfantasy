@@ -1,8 +1,8 @@
 package org.edi.initialfantasy.filter;
 
+import org.edi.freamwork.data.Result;
+import org.edi.freamwork.exception.AuthrizationException;
 import org.edi.initialfantasy.data.ServicePath;
-import org.edi.initialfantasy.dto.AuthrizationException;
-import org.edi.initialfantasy.dto.Result;
 import org.edi.initialfantasy.util.TokenVerification;
 import org.springframework.beans.factory.annotation.Autowired;
 

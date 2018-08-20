@@ -1,8 +1,8 @@
 package org.edi.initialfantasy.service;
 
-import org.edi.initialfantasy.dto.AuthrizationException;
-import org.edi.initialfantasy.dto.IResult;
-import org.edi.initialfantasy.dto.Result;
+import org.edi.freamwork.data.IResult;
+import org.edi.freamwork.data.Result;
+import org.edi.freamwork.exception.AuthrizationException;
 import org.glassfish.jersey.server.JSONP;
 
 import javax.ws.rs.GET;

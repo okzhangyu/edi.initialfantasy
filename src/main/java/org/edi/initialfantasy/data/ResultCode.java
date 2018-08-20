@@ -8,9 +8,7 @@ import org.edi.freamwork.data.operation.OpResultCode;
  */
 public class ResultCode extends OpResultCode{
 
-    public static final String OK="0";
 
-    public static final String FAIL="1";
     /**
      * token为空
      */
