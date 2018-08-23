@@ -27,7 +27,7 @@ public interface IUser {
 
     void setCompanyId(Integer value);
 
-//    String getDeptId();
-//
-//    void setDeptId(Integer value);
+    String getIsSupperUser();
+
+    void setIsSupperUser(String isSupperUser);
 }
