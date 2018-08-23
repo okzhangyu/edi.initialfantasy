@@ -11,6 +11,7 @@ public class User implements IUser {
     private String isMobileUser;
     private String mobilePassword;
     private Integer companyId;
+    private String isSupperUser;
 
     @Override
     public Integer getUserId() {
@@ -70,28 +71,31 @@ public class User implements IUser {
         this.companyId = companyId;
     }
 
+    @Override
+    public String getIsSupperUser() {
+        return isSupperUser;
+    }
+
+    @Override
+    public void setIsSupperUser(String isSupperUser) {
+        this.isSupperUser = isSupperUser;
+    }
+
 
     public User() {
     }
 
-    public User(Integer userId, String userName, String password, String isMobileUser, String mobilePassword, Integer companyId) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-        this.isMobileUser = isMobileUser;
-        this.mobilePassword = mobilePassword;
-        this.companyId = companyId;
-    }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", isMobileUser='" + isMobileUser + '\'' +
-                ", mobilePassword='" + mobilePassword + '\'' +
-                ", companyId=" + companyId +
+                "userId:" + userId +
+                ", userName:'" + userName + '\'' +
+                ", password:'" + password + '\'' +
+                ", isMobileUser:'" + isMobileUser + '\'' +
+                ", mobilePassword:'" + mobilePassword + '\'' +
+                ", isSupperUser:'" + isSupperUser + '\'' +
+                ", companyId:" + companyId +
                 '}';
     }
 }
