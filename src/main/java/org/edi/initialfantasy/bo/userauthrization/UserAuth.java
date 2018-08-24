@@ -1,6 +1,7 @@
 package org.edi.initialfantasy.bo.userauthrization;
 
 import org.edi.freamwork.bo.SimpleBO;
+import org.edi.initialfantasy.bo.user.User;
 
 /**
  * @author Fancy
@@ -8,20 +9,26 @@ import org.edi.freamwork.bo.SimpleBO;
  * @date 2018/5/17
  */
 public class UserAuth extends SimpleBO implements IUserAuth {
-    private String userId;
+    private Integer userId;
     private String authId;
     private String authType;
     private String authToken;
     private Long authExpires;
     private String isActive;
 
+    public static UserAuth createUserAuth(User user){
+        UserAuth userAuth = new UserAuth();
+        userAuth.setUserId(user.getUserId());
+        return userAuth;
+    }
+
     @Override
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     @Override
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -76,7 +83,7 @@ public class UserAuth extends SimpleBO implements IUserAuth {
     public UserAuth() {
     }
 
-    public UserAuth(String userId, String authId, String authType, String authToken, Long authExpires, String isActive) {
+    public UserAuth(Integer userId, String authId, String authType, String authToken, Long authExpires, String isActive) {
         this.userId = userId;
         this.authId = authId;
         this.authType = authType;
@@ -85,18 +92,24 @@ public class UserAuth extends SimpleBO implements IUserAuth {
         this.isActive = isActive;
     }
 
-    public UserAuth(String userId,Long authExpires) {
+    public UserAuth(Integer userId,Long authExpires) {
         this.userId = userId;
         this.authExpires = authExpires;
 
     }
 
-    public UserAuth(String userId,String isActive) {
+    public UserAuth(Integer userId,Long authExpires,String isActive) {
+        this.userId = userId;
+        this.authExpires = authExpires;
+        this.isActive = isActive;
+    }
+
+    public UserAuth(Integer userId,String isActive) {
         this.userId = userId;
         this.isActive = isActive;
     }
 
-    public UserAuth(String userId,String authToken,String isActive) {
+    public UserAuth(Integer userId,String authToken,String isActive) {
         this.userId = userId;
         this.authToken = authToken;
         this.isActive = isActive;

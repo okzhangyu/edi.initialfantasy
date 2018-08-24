@@ -2,7 +2,10 @@ package repository;
 
 import junit.framework.TestCase;
 import org.edi.initialfantasy.bo.company.Company;
+import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
+import org.edi.initialfantasy.repository.IBORepositoryUser;
+import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +24,10 @@ public class TestBoRepositoryCompany extends TestCase{
 
     @Autowired
     private IBORepositoryCompany boRepositoryCompany;
+    @Autowired
+    private IBORepositoryUser boRepositoryUser;
+    @Autowired
+    private IBORepositoryUserAuth boRepositoryUserAuth;
 
     private String companyName = "北京奥维奥科技有限公司";
 
@@ -28,5 +35,11 @@ public class TestBoRepositoryCompany extends TestCase{
     public void testSerchCompanyId(){
         Company company = boRepositoryCompany.serchCompanyId(companyName);
         Assert.assertEquals(companyName,company.getCompanyName());
+    }
+
+    @Test
+    public void testSerchUser(){
+        //User user = boRepositoryUser.
+        //Assert.assertEquals(companyName,company.getCompanyName());
     }
 }

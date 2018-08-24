@@ -12,13 +12,13 @@ public interface IUserAuth extends ISimpleBO {
      * 获取用户Id
      * @return
      */
-    String getUserId();
+    Integer getUserId();
 
     /**
      * 设置用户Id
      * @param value
      */
-    void setUserId(String value);
+    void setUserId(Integer value);
 
     /**
      * 获取授权类型

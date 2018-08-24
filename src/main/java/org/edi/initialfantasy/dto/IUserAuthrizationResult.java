@@ -1,12 +1,17 @@
 package org.edi.initialfantasy.dto;
 
+
 public interface IUserAuthrizationResult {
 
-    public String getToken();
-    public void setToken(String value);
+    String getToken();
 
-    public Long getExpires();
-    public void setExpires(Long value);
+    void setToken(String value);
 
+    Long getExpires();
 
+    void setExpires(Long value);
+
+    UserInfo getUserInfo();
+
+    void setUserInfo(UserInfo user);
 }
