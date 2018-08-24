@@ -9,6 +9,8 @@ import org.edi.initialfantasy.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+
 /**
  * Created by asus on 2018/7/6.
  */
@@ -38,18 +40,22 @@ public class BORepositoryUser implements IBORepositoryUser {
     /**
      * 账户公司查询用户
      * @param account
-     * @param companyId
+     * @param company
      * @return
      */
     @Override
-    public User getUserByCompanyId(String account,Integer companyId){
+    public User getUserByCompany(String account,String company){
         try{
-            User user = userMapper.getUserByCompanyId(account,companyId);
+            HashMap<String,String> paramMap = new HashMap<>();
+            paramMap.put("userName",account);
+            paramMap.put("companyName",company);
+            User user = userMapper.getUserByCompany(paramMap);
             return user;
         } catch (BusinessException e){
             throw e;
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }

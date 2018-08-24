@@ -12,8 +12,9 @@
   </resultMap>
 
 
-  <select id="getUserByCompanyId" resultMap="BaseResultMap">
-    SELECT * FROM AVA_IF_VIEW_USER WHERE user_name=#{0} and companyId=#{1}
+  <select id="getUserByCompany" resultMap="BaseResultMap" parameterType="Map">
+   select t0.* from AVA_IF_VIEW_USER t0 inner join AVA_IF_COMPANY t1 on t0.companyId = t1.companyId
+    where companyName = #{companyName} and t0.user_name = #{userName}
   </select>
 
   <select id="getUserBySelect" resultMap="BaseResultMap">
