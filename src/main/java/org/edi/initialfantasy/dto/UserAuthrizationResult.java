@@ -1,9 +1,12 @@
 package org.edi.initialfantasy.dto;
 
+import org.edi.initialfantasy.bo.user.User;
+
 public class UserAuthrizationResult implements IUserAuthrizationResult{
 
     private String token;
     private Long expires;
+    private UserInfo userInfo;
     @Override
     public String getToken() {
         return this.token;
@@ -19,7 +22,6 @@ public class UserAuthrizationResult implements IUserAuthrizationResult{
         return this.expires;
     }
 
-
     @Override
     public void setExpires(Long value) {
         this.expires = value;
@@ -28,8 +30,14 @@ public class UserAuthrizationResult implements IUserAuthrizationResult{
     public UserAuthrizationResult() {
     }
 
-    public UserAuthrizationResult(String token, Long expires) {
-        this.token = token;
-        this.expires = expires;
+    @Override
+    public UserInfo getUserInfo(){
+        return userInfo;
     }
+
+    @Override
+    public void setUserInfo(UserInfo userInfo){
+        this.userInfo = userInfo;
+    }
+
 }

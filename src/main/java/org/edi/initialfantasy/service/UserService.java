@@ -50,25 +50,9 @@ public class UserService implements IUserService{
         Result rs ;
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
         try {
-            Company company = boRepositoryCompany.serchCompanyId(companyName);
-            if(company==null){
-                throw new BusinessException(ResultCode.COMPANY_IS_NONEXISTENT,ResultDescription.COMPANY_IS_NONEXISTENT);
-            }
-            User loginUser =  boRepositoryUser.getUserByCompanyId(userName,company.getCompanyId());
-            if(loginUser==null){
-                throw new BusinessException(ResultCode.USER_IS_NONEXISTENT,ResultDescription.USER_IS_NONEXISTENT);
-            }
-            String hmacPassword = MD5Util.byteArrayToHexString(MD5Util.encryptHMAC(loginUser.getMobilePassword().getBytes(),"avatech"));
-            if (hmacPassword.equals(password)) {
-                //用户密码正确，获取截止到登录日期后一天的13位时间戳作为有效期
-                long NextDayTimeMillis = Long.parseLong(DataConvert.dateToStamp());
-                //对用户登录记录进行处理
-                UserAuthrizationResult uaResult = boRepositoryUserAuth.processUserLoginRecord(loginUser,NextDayTimeMillis);
-                listResult.add(uaResult);
-                rs = new Result(ResultCode.SUCCESS, ResultDescription.OK, listResult);
-            } else {
-                rs = new Result(ResultCode.USERPASSWORD_IS_ERROR,ResultDescription.USERPASSWORD_IS_ERROR, listResult);
-            }
+            UserAuthrizationResult uaResult = boRepositoryUserAuth.getAuthrization(companyName,userName,password);
+            listResult.add(uaResult);
+            rs = new Result(ResultCode.SUCCESS, ResultDescription.OK, listResult);
         }catch (DBException e){
             rs = new Result(e);
         }catch (BusinessException e){
@@ -94,7 +78,7 @@ public class UserService implements IUserService{
         try {
             auth.setIsActive("N");
             auth.setAuthToken("");
-            boRepositoryUserAuth.updateActive(auth);
+            boRepositoryUserAuth.updateAuth(auth);
             result = new Result(ResultCode.SUCCESS, ResultDescription.OK, null);
         }catch (DBException e){
             result = new Result(e);

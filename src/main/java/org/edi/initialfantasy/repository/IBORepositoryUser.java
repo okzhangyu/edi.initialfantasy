@@ -7,6 +7,6 @@ import org.edi.initialfantasy.bo.user.User;
  */
 public interface IBORepositoryUser {
     User getUserBySelect(String account, String password);
-    User getUserByCompanyId(String account,Integer companyId);
+    User getUserByCompany(String account,String company);
     User getUserByName(String account);
 }
