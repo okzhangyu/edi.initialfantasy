@@ -39,7 +39,8 @@ public class TestBoRepositoryCompany extends TestCase{
 
     @Test
     public void testSerchUser(){
-        //User user = boRepositoryUser.
-        //Assert.assertEquals(companyName,company.getCompanyName());
+        User user = boRepositoryUser.getUserByToken("84503ac6434a448d99cc1535174927000");
+
+        // Assert.assertEquals("84503ac6434a448d99cc1535174927000",user.get());
     }
 }

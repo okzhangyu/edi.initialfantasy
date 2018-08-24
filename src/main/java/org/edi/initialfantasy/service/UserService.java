@@ -1,14 +1,10 @@
 package org.edi.initialfantasy.service;
 
-import org.edi.freamwork.cryptogram.MD5Util;
 import org.edi.freamwork.data.IResult;
 import org.edi.freamwork.data.Result;
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
-import org.edi.initialfantasy.bo.company.Company;
-import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
-import org.edi.initialfantasy.data.DataConvert;
 import org.edi.initialfantasy.data.ResultCode;
 import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.data.ServicePath;
@@ -19,7 +15,6 @@ import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;

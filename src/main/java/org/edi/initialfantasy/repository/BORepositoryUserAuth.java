@@ -1,13 +1,11 @@
 package org.edi.initialfantasy.repository;
 
-import org.edi.freamwork.bo.BusinessObject;
 import org.edi.freamwork.bo.BusinessObjectException;
 import org.edi.freamwork.cryptogram.MD5Util;
 import org.edi.freamwork.data.operation.OpResultCode;
 import org.edi.freamwork.data.operation.OpResultDescription;
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
-import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
 import org.edi.initialfantasy.bo.userauthrization.UserAuth;
 import org.edi.initialfantasy.data.DataConvert;
@@ -20,7 +18,6 @@ import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.edi.initialfantasy.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

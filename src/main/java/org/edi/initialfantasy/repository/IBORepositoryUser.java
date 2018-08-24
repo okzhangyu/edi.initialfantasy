@@ -9,4 +9,5 @@ public interface IBORepositoryUser {
     User getUserBySelect(String account, String password);
     User getUserByCompany(String account,String company);
     User getUserByName(String account);
+    User getUserByToken(String token);
 }

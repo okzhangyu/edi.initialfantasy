@@ -74,6 +74,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         }
     }
 
+    @Override
     public User getUserByToken(String token){
         try {
             return userMapper.getUserByToken(token);
