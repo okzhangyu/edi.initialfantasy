@@ -24,7 +24,7 @@
   SELECT * FROM AVA_IF_VIEW_USER WHERE user_name=#{account}
   </select>
   <select id="getUserByToken" resultMap="BaseResultMap">
-  SELECT t0.* FROM AVA_IF_VIEW_USER to inner join AVA_IF_USERAUTH t1 on t0.user_name = t1.user_id WHERE auth_token=#{token}
+  SELECT t0.* FROM AVA_IF_VIEW_USER t0 inner join AVA_IF_USERAUTH t1 on t0.id = t1.user_id WHERE t1.auth_token=#{token}
   </select>
 
 </mapper>
