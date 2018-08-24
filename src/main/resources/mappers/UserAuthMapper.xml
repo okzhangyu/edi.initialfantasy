@@ -28,4 +28,5 @@
     <select id="serchAuthByToken" resultMap="BaseResultMap">
         SELECT * FROM AVA_IF_USERAUTH WHERE auth_token=#{authToken}
     </select>
+
 </mapper>

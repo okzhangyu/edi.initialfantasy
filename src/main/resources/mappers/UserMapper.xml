@@ -8,6 +8,7 @@
     <result column="is_mobile_user" property="isMobileUser" jdbcType="VARCHAR" />
     <result column="mobile_password" property="mobilePassword" jdbcType="VARCHAR" />
     <result column="companyId" property="companyId" jdbcType="INTEGER" />
+    <result column="is_supper" property="isSupperUser" jdbcType="VARCHAR" />
   </resultMap>
 
 
@@ -23,8 +24,8 @@
   <select id="getUserByName" resultMap="BaseResultMap">
   SELECT * FROM AVA_IF_VIEW_USER WHERE user_name=#{account}
   </select>
-
   <select id="getUserByToken" resultMap="BaseResultMap">
-    SELECT * FROM AVA_IF_VIEW_USER WHERE user_name=#{account}
+  SELECT t0.* FROM AVA_IF_VIEW_USER to inner join AVA_IF_USERAUTH t1 on t0.user_name = t1.user_id WHERE auth_token=#{token}
   </select>
+
 </mapper>

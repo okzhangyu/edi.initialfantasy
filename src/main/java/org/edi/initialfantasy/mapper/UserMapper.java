@@ -8,5 +8,5 @@ public interface UserMapper {
 	 User getUserBySelect(String account, String password);
 	 User getUserByCompany(HashMap<String,String> params);
 	 User getUserByName(String account);
-	 //User getUserInfo();
+	 User getUserByToken(String token);
 }

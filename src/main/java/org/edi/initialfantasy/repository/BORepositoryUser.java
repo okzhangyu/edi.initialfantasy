@@ -74,4 +74,12 @@ public class BORepositoryUser implements IBORepositoryUser {
         }
     }
 
+    public User getUserByToken(String token){
+        try {
+            return userMapper.getUserByToken(token);
+        }catch (Exception e){
+            throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
+        }
+    }
+
 }
