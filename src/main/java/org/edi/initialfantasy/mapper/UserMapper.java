@@ -6,4 +6,5 @@ public interface UserMapper {
 	 User getUserBySelect(String account, String password);
 	 User getUserByCompanyId(String account,Integer companyId);
 	 User getUserByName(String account);
+	 User getUserByToken(String token);
 }
