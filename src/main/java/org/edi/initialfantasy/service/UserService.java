@@ -14,7 +14,10 @@ import org.edi.initialfantasy.filter.UserRequest;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ import java.util.List;
  */
 @Path("/v1")
 public class UserService implements IUserService{
+    Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private IBORepositoryUser boRepositoryUser;
@@ -49,10 +53,13 @@ public class UserService implements IUserService{
             listResult.add(uaResult);
             rs = new Result(ResultCode.SUCCESS, ResultDescription.OK, listResult);
         }catch (DBException e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             rs = new Result(e);
         }catch (BusinessException e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             rs = new Result(e);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             e.printStackTrace();
             rs = new Result(ResultCode.FAIL, e);
         }
@@ -76,10 +83,13 @@ public class UserService implements IUserService{
             boRepositoryUserAuth.updateAuth(auth);
             result = new Result(ResultCode.SUCCESS, ResultDescription.OK, null);
         }catch (DBException e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             result = new Result(e);
         }catch (BusinessException e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             result = new Result(e);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             e.printStackTrace();
             result = new Result(ResultCode.FAIL, e);
         }

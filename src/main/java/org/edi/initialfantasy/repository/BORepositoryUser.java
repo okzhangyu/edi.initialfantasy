@@ -59,8 +59,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         } catch (BusinessException e){
             logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw e;
-        }
-        catch (Exception e){
+        } catch (Exception e){
             logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             e.printStackTrace();
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
