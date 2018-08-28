@@ -26,6 +26,8 @@ public class ResultDescription extends OpResultDescription {
 
     public static final String USERPASSWORD_IS_ERROR = "用户密码错误";
 
+    public static final String LOGIN_EXCEPTION = "登录异常>>>>>>>>";
+
     public static final String COMPANY_FILE_NOT_FOUND = "公司配置文件未找到";
 
     public static final String COMPANY_INFO_ERROR = "公司配置文件配置错误";

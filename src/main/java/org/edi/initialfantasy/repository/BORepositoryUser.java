@@ -5,7 +5,10 @@ import org.edi.freamwork.data.operation.OpResultDescription;
 import org.edi.freamwork.exception.BusinessException;
 import org.edi.freamwork.exception.DBException;
 import org.edi.initialfantasy.bo.user.User;
+import org.edi.initialfantasy.data.ResultDescription;
 import org.edi.initialfantasy.mapper.UserMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +20,7 @@ import java.util.HashMap;
 
 @Component(value="boRepositoryUser")
 public class BORepositoryUser implements IBORepositoryUser {
+    Logger logger = LoggerFactory.getLogger(BORepositoryUser.class);
 
 
     @Autowired
@@ -33,6 +37,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try{
             return userMapper.getUserBySelect(account,password);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -52,9 +57,11 @@ public class BORepositoryUser implements IBORepositoryUser {
             User user = userMapper.getUserByCompany(paramMap);
             return user;
         } catch (BusinessException e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw e;
         }
         catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             e.printStackTrace();
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
@@ -70,6 +77,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try {
             return userMapper.getUserByName(account);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -79,6 +87,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try {
             return userMapper.getUserByToken(token);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }

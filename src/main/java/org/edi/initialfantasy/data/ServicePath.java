@@ -19,4 +19,6 @@ public class ServicePath {
     public final static String SERVICE_LIMIT = "limit";
 
     public final static String SERVICE_DOCSTATUS = "docStatus";
+
+    public final static String SERVICE_BASEENTRY = "baseEntry";
 }
