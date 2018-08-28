@@ -17,6 +17,8 @@ import org.edi.initialfantasy.mapper.CompanyMapper;
 import org.edi.initialfantasy.mapper.UserAuthMapper;
 import org.edi.initialfantasy.mapper.UserMapper;
 import org.edi.initialfantasy.util.UUIDUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +31,7 @@ import java.util.HashMap;
 
 @Component(value="boRepositoryUserAuth")
 public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
-
+    Logger logger = LoggerFactory.getLogger(BORepositoryUser.class);
 
     @Autowired
     private UserAuthMapper userAuthMapper;
@@ -45,6 +47,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try{
             userAuthMapper.saveAuth(userAuth);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -55,6 +58,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try {
             userAuthMapper.updateAuth(userAuth);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -65,6 +69,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try {
             return userAuthMapper.serchAuthByToken(token);
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -111,6 +116,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
             }
             return uaResult;
         }catch (Exception e){
+            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
             e.printStackTrace();
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }

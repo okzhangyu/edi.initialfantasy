@@ -6,7 +6,7 @@
 
     <groupId>org.edi</groupId>
     <artifactId>edi.initialfantasy</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>0.1.0</version>
 
     <properties>
