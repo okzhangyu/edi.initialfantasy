@@ -8,6 +8,8 @@ package org.edi.initialfantasy.data;
 
 public class ServicePath {
 
+    public static final String COMPANY_SERVICE_CONFIG = "companyServicePath.json";
+
     public static final String LOGIN_SERVICE_ROUTE = "v1/userauthrization";
 
     public static final String TOKEN_NAMER = "token";

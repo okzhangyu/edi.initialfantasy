@@ -3,6 +3,7 @@ package repository;
 import junit.framework.TestCase;
 import org.edi.initialfantasy.bo.company.Company;
 import org.edi.initialfantasy.bo.user.User;
+import org.edi.initialfantasy.dto.CompanyServicePath;
 import org.edi.initialfantasy.repository.IBORepositoryCompany;
 import org.edi.initialfantasy.repository.IBORepositoryUser;
 import org.edi.initialfantasy.repository.IBORepositoryUserAuth;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.List;
 
 /**
  * @author Fancy
@@ -39,8 +42,11 @@ public class TestBoRepositoryCompany extends TestCase{
 
     @Test
     public void testSerchUser(){
-        User user = boRepositoryUser.getUserByToken("84503ac6434a448d99cc1535174927000");
+        //User user = boRepositoryUser.getUserByToken("84503ac6434a448d99cc1535174927000");
 
+        List<CompanyServicePath> companyServicePathList = boRepositoryCompany.getCompanyInfo();
+        String companyStr = companyServicePathList.toString();
+        Assert.assertEquals(1,companyServicePathList.size());
         // Assert.assertEquals("84503ac6434a448d99cc1535174927000",user.get());
     }
 }
