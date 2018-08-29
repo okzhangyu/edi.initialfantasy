@@ -30,6 +30,7 @@ public class RequestFilter implements ContainerRequestFilter,ContainerResponseFi
 
     @Autowired
     private TokenVerification tokenVerificate;
+
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
         //记录请求日志

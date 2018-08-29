@@ -22,7 +22,6 @@ import java.util.HashMap;
 public class BORepositoryUser implements IBORepositoryUser {
     Logger logger = LoggerFactory.getLogger(BORepositoryUser.class);
 
-
     @Autowired
     private UserMapper userMapper;
 
@@ -37,7 +36,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try{
             return userMapper.getUserBySelect(account,password);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -57,11 +56,10 @@ public class BORepositoryUser implements IBORepositoryUser {
             User user = userMapper.getUserByCompany(paramMap);
             return user;
         } catch (BusinessException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw e;
         } catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
-            e.printStackTrace();
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -76,7 +74,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try {
             return userMapper.getUserByName(account);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -86,7 +84,7 @@ public class BORepositoryUser implements IBORepositoryUser {
         try {
             return userMapper.getUserByToken(token);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }

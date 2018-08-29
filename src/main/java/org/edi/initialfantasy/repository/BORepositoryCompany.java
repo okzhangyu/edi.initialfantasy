@@ -44,10 +44,10 @@ public class BORepositoryCompany implements IBORepositoryCompany {
             Company company =companyMapper.serchCompanyId(companyName);
             return company;
         } catch (BusinessException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw e;
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -67,8 +67,10 @@ public class BORepositoryCompany implements IBORepositoryCompany {
             List<CompanyServicePath> companyServicePaths = gson.fromJson(reader, List.class);
             return companyServicePaths;
         } catch (FileNotFoundException e) {
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new BusinessObjectException(ResultCode.COMPANY_FILE_ERROR,ResultDescription.COMPANY_FILE_NOT_FOUND);
         } catch (UnsupportedEncodingException e) {
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new BusinessObjectException(ResultCode.COMPANY_FILE_ERROR,ResultDescription.COMPANY_INFO_ERROR);
         }
     }

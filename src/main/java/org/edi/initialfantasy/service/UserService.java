@@ -1,5 +1,6 @@
 package org.edi.initialfantasy.service;
 
+import org.edi.freamwork.bo.BusinessObjectException;
 import org.edi.freamwork.data.IResult;
 import org.edi.freamwork.data.Result;
 import org.edi.freamwork.exception.BusinessException;
@@ -48,19 +49,22 @@ public class UserService implements IUserService{
     public IResult<IUserAuthrizationResult> Login(@QueryParam("companyName")String companyName,@QueryParam("userName")String userName,@QueryParam("password")String password) {
         Result rs ;
         List<UserAuthrizationResult> listResult = new ArrayList<UserAuthrizationResult>();
+        logger.info(ResultDescription.USER_LOGININ);
         try {
             UserAuthrizationResult uaResult = boRepositoryUserAuth.getAuthrization(companyName,userName,password);
             listResult.add(uaResult);
             rs = new Result(ResultCode.SUCCESS, ResultDescription.OK, listResult);
         }catch (DBException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             rs = new Result(e);
         }catch (BusinessException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
+            rs = new Result(e);
+        }catch (BusinessObjectException e){
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             rs = new Result(e);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
-            e.printStackTrace();
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             rs = new Result(ResultCode.FAIL, e);
         }
         return rs;
@@ -77,20 +81,23 @@ public class UserService implements IUserService{
     public IResult Logout(@QueryParam(ServicePath.TOKEN_NAMER)String token) {
         Result result ;
         UserAuth auth = boRepositoryUserAuth.serchAuthByToken(token);
+        logger.info(ResultDescription.USER_LOGINOUT);
         try {
             auth.setIsActive("N");
             auth.setAuthToken("");
             boRepositoryUserAuth.updateAuth(auth);
             result = new Result(ResultCode.SUCCESS, ResultDescription.OK, null);
         }catch (DBException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             result = new Result(e);
         }catch (BusinessException e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
+            result = new Result(e);
+        }catch (BusinessObjectException e){
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             result = new Result(e);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
-            e.printStackTrace();
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             result = new Result(ResultCode.FAIL, e);
         }
         return result;
