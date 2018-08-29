@@ -31,7 +31,7 @@ import java.util.HashMap;
 
 @Component(value="boRepositoryUserAuth")
 public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
-    Logger logger = LoggerFactory.getLogger(BORepositoryUser.class);
+    Logger logger = LoggerFactory.getLogger(BORepositoryUserAuth.class);
 
     @Autowired
     private UserAuthMapper userAuthMapper;
@@ -47,7 +47,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try{
             userAuthMapper.saveAuth(userAuth);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -58,7 +58,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try {
             userAuthMapper.updateAuth(userAuth);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -69,7 +69,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
         try {
             return userAuthMapper.serchAuthByToken(token);
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
@@ -116,8 +116,7 @@ public class BORepositoryUserAuth implements  IBORepositoryUserAuth {
             }
             return uaResult;
         }catch (Exception e){
-            logger.info(ResultDescription.LOGIN_EXCEPTION,e);
-            e.printStackTrace();
+            logger.error(ResultDescription.LOGIN_EXCEPTION,e);
             throw new DBException(OpResultCode.DATABASE_OPERATE_ERROR,OpResultDescription.DATABASE_OPERATE_ERROR);
         }
     }
