@@ -25,7 +25,7 @@
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="org.edi.initialfantasy.*" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
 		<property name="url" value="jdbc:sqlserver://192.168.3.14;DatabaseName=StockManageDB"/>
 		<property name="username" value="sa"/>
@@ -35,12 +35,12 @@
 		<property name="maxIdle" value="20"></property>
 		<property name="maxWait" value="1800"></property>
 		<property name="initialSize" value="10"></property>
-	</bean>
+	</bean>-->
 
 
 
 
-   <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
 		<property name="url" value="jdbc:sqlserver://192.168.1.70;DatabaseName=TEST_HT024_02"/>
 		<property name="username" value="avasa6"/>
@@ -50,7 +50,7 @@
 		<property name="maxIdle" value="20"></property>
 		<property name="maxWait" value="1800"></property>
 		<property name="initialSize" value="10"></property>
-	</bean>-->
+	</bean>
 
 
 
