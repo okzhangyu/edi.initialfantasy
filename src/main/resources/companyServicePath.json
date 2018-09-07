@@ -1,7 +1,12 @@
 [
   {
-    "shortName":"SHYJ",
+    "shortName":"SHYJ_TEST",
     "companyName":"Test_02上海优家家居",
     "servicePath":"http:login3.avacloud.com.cn:9090"
+  },
+  {
+    "shortName":"SHYJ",
+    "companyName":"上海优家家居有限公司",
+    "servicePath":"http:login3.avacloud.com.cn:9092"
   }
 ]
