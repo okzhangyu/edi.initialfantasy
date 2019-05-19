@@ -1,8 +1,8 @@
 [
   {
-    "shortName":"SHYJ_TEST",
-    "companyName":"Test_02上海优家家居",
-    "servicePath":"http:login3.avacloud.com.cn:9090"
+    "shortName":"ldk",
+    "companyName":"利达康",
+    "servicePath":"192.168.3.57:9090"
   },
   {
     "shortName":"SHYJ",

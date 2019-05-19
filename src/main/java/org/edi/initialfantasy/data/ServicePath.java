@@ -21,4 +21,6 @@ public class ServicePath {
     public final static String SERVICE_DOCSTATUS = "docStatus";
 
     public final static String SERVICE_BASEENTRY = "baseEntry";
+
+    public final static String SERVICE_TRANSTYPE = "transactionType";
 }
